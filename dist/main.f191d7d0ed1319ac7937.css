@@ -4,9 +4,9 @@
 * {
   box-sizing: border-box; }
 
-code {
+.comments code {
   color: green;
-  font-size: 14px;
+  font-size: 11px;
   font-weight: normal; }
 
 .btn-hide-container {
@@ -20,6 +20,9 @@ code {
       outline: none; }
     .btn-hide-container button:hover {
       box-shadow: 4px 4px 2px grey; }
+
+.editable-elem:focus {
+  outline: none; }
 
 h1, h2, h3, h4 {
   text-align: center;
@@ -394,7 +397,8 @@ nav {
       .container .code .inner-code .output-msg {
         color: darkred; }
     .container .code .curr-exec {
-      color: green; }
+      color: green;
+      text-shadow: 2px 2px 1px yellow; }
   .container .output-screen {
     background-color: black;
     color: white;

@@ -1,38 +1,71 @@
 var conditionArr = [];
-export default function solveLogic(_conditionArr) {
+export default function solveLogic(_conditionArr,logic,index) {
 	conditionArr =_conditionArr;
-	solveInverter();
-
-	solveAND();
- 	
-	solveOR();
+	switch(logic){
+		
+		case '!':
+			solveInverter(index);
+		break;
+		case '&&':
+			solveAND(index);
+		break;
+		
+		case '||':
+			solveOR(index);
+		break;
+	}
 	
  	return conditionArr;
 }
-
-function solveInverter(){
-	let index = conditionArr.indexOf("!");
-	if(index > 0){
- 		conditionArr[index]=!conditionArr[index+1];
- 		conditionArr.splice(index+1,1);
- 		solveInverter();
+function solveInverter(index)
+{
+	if(conditionArr[index] != "!")
+	{
+		return;
 	}
+	if( conditionArr[index+1] == true || conditionArr[index+1] ==false)
+	{
+		conditionArr[index] = !conditionArr[index+1]; 
+		conditionArr.splice(index+1,1);
+
+		return;
+	}
+	
+	return;
+
+}
+function solveAND(index){
+	if( conditionArr[index-1] == false || conditionArr[index+1] ==false)
+	{
+		conditionArr[index-1] = false;
+		//check if || exist
+		let orIndex =conditionArr.indexOf("||"); 
+		conditionArr.splice(index,orIndex > 0 && orIndex > index?orIndex-index:conditionArr.length);
+		return;
+	}
+	
+	if ( conditionArr[index-1] == true && conditionArr[index+1] == true) {
+		conditionArr[index-1]=true;
+	    conditionArr.splice(index,2);
+	    return;
+	}
+
+	return;
 }
 
-function solveAND(){
-	let index = conditionArr.indexOf("&&");
-	if(index > 0){
- 		conditionArr[index-1]=conditionArr[index-1] && conditionArr[index+1];
- 	    conditionArr.splice(index,2);
- 		solveAND();
+function solveOR(index){
+	if( conditionArr[index-1] == true || conditionArr[index+1] == true){
+		conditionArr =[];
+		conditionArr[0] =true;
+		return;
 	}
-}
-
-function solveOR(){
-	let index = conditionArr.indexOf("||");
-	if(index > 0){
- 		conditionArr[index-1]=conditionArr[index-1] || conditionArr[index+1];
- 		conditionArr.splice(index,2);
- 		solveOR();
+	
+	if( conditionArr[index-1] == false && conditionArr[index+1] == false)
+	{
+		conditionArr[index-1]=false;
+		conditionArr.splice(index,2);
+		return;
 	}
+	
+	return;
 }

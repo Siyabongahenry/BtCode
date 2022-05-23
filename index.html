@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>BtCode</title>
-<link rel="icon" href="dist/favicon.ico"><script defer src="dist/main.js"></script><link href="dist/main.d04b5000a2467d03e0d3.css" rel="stylesheet"></head>
+<link rel="icon" href="dist/favicon.ico"><script defer src="dist/main.js"></script><link href="dist/main.f191d7d0ed1319ac7937.css" rel="stylesheet"></head>
 <body>
     <header>
         <nav>
@@ -24,6 +24,9 @@
                     <a href="#skills">WHILE LOOP</a>
                 </li>
                 <li>
+                    <a href="#skills">DO WHILE LOOP</a>
+                </li>
+                <li>
                     <a href="#projects">FOR LOOP</a>
                 </li>
             </ul>
@@ -34,65 +37,96 @@
         <div class="if-block">
             <h2>IF STATEMENT</h2>
             <div class="code-menu">
-                <code>/*Use this button to see how an if statement work*/</code>
-                <br>
-                <button id="if-btn"><i class="fa fa-play"></i></button>
-            </div>
-            <div class="code">
-                <div contenteditable class="vars-container" 
-                id="if-vars">
-                    <span>int <span class="txt-darkred">n = 3</span>;</span>
+                <div class="comments">
+                    <code>/*Use this button to execute the code*/</code>
                 </div>
                 <div>
+                    <button id="if-btn"><i class="fa fa-play"></i></button>
+                </div>
+                <div>
+                    <label for="">
+                        <input type="checkbox"> show full solution
+                    </label>
+                </div>
+            </div>
+            <div class="code">
+                <div class="comments">
+                    <code>//the variables are editable but not the data types</code>
+                </div>
+                <div class="vars-container editable-elem" 
+                id="if-vars">
+                    <span>
+                        <span class="data-type">int</span>&nbsp;
+                        <span class="txt-darkred editable-elem" contenteditable>n = 3</span>;
+                    </span>
+                    <br>
+                    <span>
+                        <span class="data-type">int</span>&nbsp;
+                        <span class="txt-darkred editable-elem" contenteditable>m = 6</span>;
+                    </span>
+                </div>
+                <div>
+                    <div class="comments">
+                        <code>//the condition is editable</code>
+                    </div>
                     <div>
                         if(
-                        <span class="cond" id="if-cond" contenteditable="true">
-                            n > 0 && n <= 5
+                        <span class="cond editable-elem" id="if-cond" contenteditable="true">
+                            n > 0
                       </span> 
                         ){
                     </div>
                     <div>
+                        <div class="comments">
+                            <code>//the output text is editable</code>
+                        </div>
                         <div class="inner-code" id="if-inner-code">
-                            <span constenteditable>
-                                Console.WriteLine
-                            </span>
-                            (
-                                <span contenteditable class="output-msg" 
-                                id="if-output-msg">
-                                        "Hello world"
+                            <div>
+                                <span class="print-method">
+                                    Console.WriteLine
                                 </span>
-                            );
+                                (
+                                    <q>
+                                        <span contenteditable class="output-msg editable-elem" 
+                                        id="if-output-msg">
+                                                Hello world
+                                        </span>
+                                    </q>
+                                );
+                            </div>
                         </div>
                     </div>
                     <div>
                         }
                     </div>
-                    <button><i class="fa fa-plus"></i> else</button>
                 </div>
-                <div class="else-statement" style="display:none;">
+                <div id="else-statement" style="display:none;">
                     <div>
                     else
                     </div>
                     <div>
                     {
                     </div>
-                    <div >
-                        <div class="inner-code" id="if-inner-code">
-                            <span constenteditable>
+                    <div>
+                        <div class="inner-code" id="else-inner-code">
+                            <span class="print-method">
                                 Console.WriteLine
                             </span>
                             (
-                                <span contenteditable class="output-msg" 
-                                id="else-output-msg">
-                                        "Good bye world"
-                                </span>
+                                <q>
+                                    <span contenteditable class="output-msg" 
+                                    id="else-output-msg">
+                                            Good bye world
+                                    </span>
+                                </q>
                             );
                         </div>
                     </div>
                     <div>
-                    }
+                    } 
                     </div>
                 </div>
+                <button id="btn-add-else"><i class="fa fa-plus"></i> else</button>
             </div>
             <div class="output-screen" >
                 <span id="if-screen-msg"></span>
@@ -103,7 +137,7 @@
                 </div>
                 <div id="if-notes" style="display:none;">
                     <div class="explanations slide-element">
-                        <h3>How the logic worsk</h3>
+                        <h3>Logic table</h3>
                         <table>
                             <tbody>
                                 <tr>
@@ -139,161 +173,161 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-                    <div class="explanations">         
-                       <h3>What to know about an if statement?</h3> 
-                        <ul>
-                            <li>
-                                An if statement execute the code inside it, if and only if the condition result to a true value.
-                            </li>
-                            <li>
-                                If the condition result in a false value, an if statement does not execute the code inside it
-                            </li>
-                            <li>
-                                When working with boolean values, the if statement execute the code inside it, if and only if the boolean value is true.
-                            </li>
-                        </ul>      
-                    </div>
-                    <div class="explanations">         
-                       <h3>The weird thing about an if statement</h3>
-                        <div>
-                            <span class="txt-green">
-                                //The code below will run fine with no runtime error
-                            </span>   
-                        </div>
-                        <div class="code">
-                            <div>
-                                string <span class="txt-darkred">name</span>;
-                            </div>
-                            <div>
-                                if(<span class="txt-darkred">name != null && name == "Siya" </span> )
-                            </div>
-                            {
-                            <div class="inner-code">
-                                Console.WriteLine(<span class="txt-darkred">"hello world"</span>);
-                            </div>
-                            }
-                        </div>
-                        <div>
-                            <span class="txt-red">
-                                //The code below will cause a runtime error
-                            </span>   
-                        </div>
-                        <div class="code">
-                            <div>
-                                string <span class="txt-darkred">name</span>;
-                            </div>
-                            <div>
-                                if(<span class="txt-darkred">name == "Siya" && name != null</span> )
-                            </div>
-                            {
-                            <div class="inner-code">
-                                Console.WriteLine(<span class="txt-darkred">"hello world"</span>);
-                            </div>
-                            }
-                        </div>
-                        <p>
-                            The secrete here is how an if statement solves the logic 
-                            AND(<span class="txt-darkred">&&</span>). In an
-                            if statement, if the left hand side of an 
-                            AND(<span class="txt-darkred">&&</span>) is false, the right hand side is not solved at all, a false value is returned immediately. The opposite applies an OR(<span class="txt-darkred">||</span>) logic, if the left hand side of an OR(<span class="txt-darkred">||</span>) is true the right hand side is not solved at all, a true value is immediately returned.
-                        </p>
-                        <p>
-                            If you were to replace the the AND(<span class="txt-darkred">&&</span>) logic with an
-                            OR(<span class="txt-darkred">||</span>) in the above code, both 
-                            code will results in a runtime error.
-                        </p>
-                        <p>
-                            Understanding the above code will help you to prevent writing unnercessary nested if statements.s
-                        </p>
-                    </div>
-                   
+                    </div>               
                 </div>
             </div> 
         </div>
         <div class="while-loop-block">
             <h2>WHILE LOOP</h2>
             <div class="code-menu">
-                <code>/*Use this button to see how a while loop work*/</code>
-                <br>
-                <button id="for-btn"><i class="fa fa-play"></i></button>
+                <div>
+                    <button id="while-btn"><i class="fa fa-play"></i></button>
+                </div>
+                <div>
+                    <label for="">
+                        <input type="checkbox"> show full solution
+                    </label>
+                </div>
             </div>
             <div class="code">
-                <div contenteditable class="vars-container" id="while-vars">
-                    <span>int <span class="txt-darkred">n = 3</span>;</span>
-                </div>
-                <div>
-                    <code>//n++ increment n by 1</code>
-                </div>
-                <div>
-                    do
-                    <div>
-                        {
-                    </div>
-                    <div class="inner-code">
-                         <span contenteditable>
-                        Console.WriteLine
+                <div class="vars-container" id="while-vars">
+                    <span>
+                        <span class="data-type">int</span>&nbsp;
+                        <span class="txt-darkred" >n = &nbsp;
+                        <span class="txt-center editable-elem" contenteditable id="while-inc" >1
+                        </span>;
                         </span>
-                        (
-                            <span contenteditable class="output-msg" id="do-msg">
-                                    "Hi, I'm the do loop code"
-                            </span>
-                        );
-                    </div>
-                    <div>
-                        }
-                    </div>
+                    </span>
                 </div>
                 <div>
                     while(
-                    <span class="cond txt-darkred" id="while-cond" contenteditable>
+                    <span class="cond txt-darkred editable-elem" id="while-cond" contenteditable>
                         n < 3
                     </span>
                     ){
                 </div>
                 <div class="inner-code">
-                    <span contenteditable>
-                        Console.WriteLine
-                    </span>
-                    (
-                        <span contenteditable class="output-msg">
-                                "Hello World"
+                    <div class="inner-code-1">
+                        <span class="print-method">
+                            Console.WriteLine
                         </span>
-                    );
+                        (
+                            <q>
+                                <span contenteditable class="output-msg editable-elem" 
+                                id="while-output-msg">
+                                        Hello World
+                                </span>
+                            </q>
+                        );
+                    </div>
+                    <div class="comments">
+                        <code>//n++ increment n by 1</code>
+                    </div>
                     <div>
-                       <span class="txt-darkred" id="while-increment">n++</span>;
+                       <span class="txt-darkred inner-code-2">n++</span>;
                     </div>
                 </div>
                 <div>
                     }
                 </div>
-                <button><i class="fa fa-plus"></i> do</button>
             </div>
             <div class="output-screen" >
-                <span id="while-screen-msg"></span>
+            </div>
+        </div>
+        <div class="do-while-block">
+            <h2>DO WHILE LOOP</h2>
+            <div class="code-menu">
+                <div>
+                    <button id="do-while-btn"><i class="fa fa-play"></i></button>
+                </div>
+                <div>
+                    <label for="">
+                        <input type="checkbox"> show full solution
+                    </label>
+                </div>
+            </div>
+            <div class="code">
+                <div class="comments">
+                    <code>//click the number to change the value</code>
+                </div>
+                <div class="vars-container" id="do-vars">
+                    <span>
+                        <span class="data-type">int</span>&nbsp;
+                        <span class="txt-darkred" >n = 
+                            <span class="txt-center editable-elem" contenteditable 
+                            id="do-inc" >1</span>;
+                        </span>
+                    </span>
+                </div>
+                <div>
+                    do
+                </div>
+                <div>
+                    {
+                </div>
+                <div class="inner-code">
+                    <div class="inner-code-1">
+                        <span class="print-method">
+                            Console.WriteLine
+                        </span>
+                        (
+                            <q>
+                                <span contenteditable class="output-msg editable-elem" 
+                                id="do-output-msg">
+                                        Hello World
+                                </span>
+                            </q>
+                        );
+                    </div>
+                    <div class="comments">
+                        <code>//n++ increment n by 1</code>
+                    </div>
+                    <div>
+                       <span class="txt-darkred inner-code-2">n++</span>;
+                    </div>  
+                </div>
+                <div>
+                    }
+                </div>
+                <div>
+                    while(
+                    <span class="cond txt-darkred editable-elem" id="do-while-cond" contenteditable>
+                        n < 3
+                    </span>
+                    ); 
+                </div>
+                
+                
+            </div>
+            <div class="output-screen" >
             </div>
         </div>
         <div class="for-loop-block">
             <h2>FOR LOOP</h2>
             <div class="code-menu">
-                <code>/*Use this button to see how a for loop work*/</code>
-                <br>
-                <button id="for-btn"><i class="fa fa-play"></i></button>
+                <div>
+                    <button id="for-btn"><i class="fa fa-play"></i></button>
+                </div>
+                <div>
+                    <label for="">
+                        <input type="checkbox"> show full solution
+                    </label>
+                </div>
             </div>
             <div class="code">
                 <div class="vars-container">
                     
                 </div>
-                <div>
+                <div class="comments">
                     <code>//i++ increment i by 1</code>
                 </div>
                 <div>
                     for(
                     <span class="cond" id="for-var">
-                        <span>int</span> i=
-                        <span id="for-value" contenteditable>0</span>
+                        <span class="data-type">int</span>&nbsp;i&nbsp;=&nbsp;
+                        <span id="for-value" contenteditable class="editable-elem">0</span>
                     </span>;
-                    <span class="cond" id="for-cond" contenteditable>
+                    <span class="cond editable-elem" id="for-cond" contenteditable>
                         i < 3
                     </span>;
                     <span class="cond" id="last-cond">
@@ -302,21 +336,24 @@
                     ){
                 </div>
                 <div class="inner-code">
-                    <span contenteditable>
-                        Console.WriteLine
-                    </span>
-                    (
-                        <span contenteditable class="output-msg">
-                                "Hello World"
+                    <div>
+                        <span class="print-method">
+                            Console.WriteLine
                         </span>
-                    );
+                        (
+                            <q>
+                                <span contenteditable class="output-msg editable-elem">
+                                        Hello World
+                                </span>
+                            </q>
+                        );
+                    </div>
                 </div>
                 <div>
                     }
                 </div>
-            </div>
-            <div class="output-screen">
-               
+                <div class="output-screen" >
+                </div>
             </div>
             <div>
                 <div class="btn-hide-container">
@@ -332,7 +369,7 @@
                                 A for loop continues executing the code inside it if and only if the condition result to a true value.
                             </li>
                             <li>
-                                If the condition result in a false value, the for loop is terminated, thus the code inside it is not executed.
+                                If the condition result in a false value, the for loop is terminated, thus the code inside it is not execsuted.
                             </li>
                             <li>
                                 The last condition in the for loop (e.g i++) is executed after the execution of the inside code.

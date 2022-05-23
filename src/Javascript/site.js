@@ -1,16 +1,22 @@
 import "./menu";
 import "./slide";
 import setIfStatement from "./if-code.js";
-import setForStatement from "./for-code.js"
+import setWhileLoop from "./while-code.js";
+import setDoWhileLoop from "./dowhile-code.js"
+import setForLoop from "./for-code.js";
 
 //if statement events
 setIfStatement();
+//while loop
+setWhileLoop();
+//do while
+setDoWhileLoop();
 //for loop
-setForStatement();
+setForLoop();
 //separate values from operators
 export function sepValFromOper(conditionArr,input){
 	//matches operators in the string
-	let pattern = /(>={0,1}|<={0,1}|!={0,1}|==|&&|\|{2}|\(|\))/i;
+	let pattern = /(>=?|<=?|==|!=?|&&|\|{2}|\(|\))/i;
 	let operator = input.match(pattern);
 	let tempArr =[];
 	if(operator != null){
@@ -20,47 +26,34 @@ export function sepValFromOper(conditionArr,input){
 		input = input.replace(operator," ");
 		tempArr = input.split(" ");
 		//insert the string before condition to array
-		conditionArr.push(tempArr[0]);
+		if(tempArr[0] != '')
+		{
+			conditionArr.push(tempArr[0]);
+		}
 		conditionArr.push(operator);
-		//do operator search for the string after the found operator to find other operators	
-		sepValFromOper(conditionArr,tempArr.pop());
+		//do operator search for the string after the found operator to find other operators
+
+		let lastString = tempArr.pop();
+		if(lastString != "")
+		{
+			sepValFromOper(conditionArr,lastString);
+		}
 	}
 	else{
 		//push the last element to the array 
 		conditionArr.push(input);
 		conditionArr = conditionArr.filter(x => x != "");
+		conditionArr = conditionArr.map((x)=>{
+			if(x == "true" || x == "false")
+			{
+				return x=="true";
+			}
+			return x;
+		});
 	} 
 	return conditionArr;
 }
 
-//replace variables symbols with actual values
-export function insertActualVars(conditionArr,vars){
-	vars = vars.flat();
-	let patternWord =/^[a-zA-Z_]\w*$/;
-	conditionArr=conditionArr.map((x)=>{
-		if(x.match(patternWord) != null){
-			for(let i=0;i< vars.length-1;i++){
-				let vari = vars[i].replaceAll(" ","");
-				if(vari==x){
-					return vars[i+1].replaceAll(" ","");
-				}
-			}
-		}
-		return x;
-	});
-	conditionArr = convStrToNumber(conditionArr);
-	return conditionArr;
-}
-//convert strings to numbers from the array
-function convStrToNumber(conditionArr){
- 	conditionArr = conditionArr.map((x)=>{
- 		if(!isNaN(parseFloat(x))){
- 			return parseFloat(x);
- 		}
- 		return x;
- 	});
- 	return conditionArr;
- }
 
 //buttons hide content
 var btnsHide = document.getElementsByClassName("btn-hidden-content");

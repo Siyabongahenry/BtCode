@@ -2,9 +2,9 @@ import findVariables from "./variables.js";
 import {sepValFromOper} from "./site.js";
 import {condCollectorSL,solveCondition} from "./solve-cond.js"
 
-var whileBtn = document.getElementById("while-btn");
+var do_whileBtn = document.getElementById("do-while-btn");
 //execution time
-var exec_time = 2000;
+const exec_time = 2000;
 //variables outside for loop
 var varsBlock;
 //output screen
@@ -13,29 +13,28 @@ var screen;
 var outputMSG
 //initial consition
 var initialCond;
-let currentCond;
-var condCollector =[];
+var currentCond;
 //condition block
 var condBlock;
 var variablesArr =[];
 var conditionArr =[];
-export default function setWhileLoop()
+var condCollector =[];
+export default function setDoWhileLoop()
 {
-	whileBtn.addEventListener("click",function(){
+	do_whileBtn.addEventListener("click",function(){
 		this.innerHTML ="<i class='fa fa-pause'></i>";
 		this.disable = true;
 		//clear out put screen
-		screen = document.querySelector(".while-loop-block .output-screen");
+		screen = document.querySelector(".do-while-block .output-screen");
 		screen.innerHTML ="";
 		//message to be outputed in the screen container
-		outputMSG = document.getElementById("while-output-msg").innerText;
+		outputMSG = document.getElementById("do-output-msg").innerText;
 		//
-		condBlock = document.getElementById("while-cond");
+		condBlock = document.getElementById("do-while-cond");
 		//store initial condition to return to it
 		initialCond = condBlock.innerText;
 		currentCond = initialCond;
 		//start execution
-		
 		startExec();
 	});
 }
@@ -44,7 +43,7 @@ function startExec(){
 	conditionArr =[];
 	condCollector = [];
 
-	varsBlock = document.getElementById("while-vars");
+	varsBlock = document.getElementById("do-vars");
 	variablesArr =findVariables(varsBlock.innerText).flat();
 
 	currentCond = currentCond.replaceAll(" ","");
@@ -61,40 +60,41 @@ function startExec(){
 	console.log(condCollector);
 	showSteps(0,condBlock);
 }
-	
-function showSteps(count,_condBlock){
-	if(count < condCollector.length)
+function showSteps(count,_condBlock,isNext = true){
+	if(isNext)
 	{
 		setTimeout(()=>{
-			let cond = condCollector[count].toString().replaceAll(","," ");
-			_condBlock.innerText = cond;
-			_condBlock.classList.add("curr-exec");
-			showSteps(count+1,_condBlock);
+
+			execInnerC();
+			let innercode1 = document.querySelector(".do-while-block .inner-code-1");
+			innercode1.classList.add("curr-exec");
+			setTimeout(()=>{
+				innercode1.classList.remove("curr-exec");
+				let innercode2 = document.querySelector(".do-while-block .inner-code-2");
+				innercode2.classList.add("curr-exec");
+				let inc = document.getElementById("do-inc");
+				inc.classList.add("curr-exec");
+				inc.innerText = parseFloat(inc.innerText)+1;
+				showSteps(count+1,_condBlock,false);
+				setTimeout(()=>{
+					innercode2.classList.remove("curr-exec");
+					inc.classList.remove("curr-exec");
+				},2000);
+			},2000);
+			
 		},2000);
 
 	}
-	else{
-		let cond = condCollector[count-1].toString().replaceAll(","," ");
-		_condBlock.classList.remove("curr-exec");
+	else {
+		let cond = condCollector[count].toString().replaceAll(","," ");
+		_condBlock.innerText = cond;
+		_condBlock.classList.add("curr-exec");
+		let nextStep = condCollector[count].toString().replaceAll(","," ")==true;
 		setTimeout(()=>{
-			if(cond == "true")
+			if(nextStep)
 			{
-				execInnerC();
-				let innercode1 = document.querySelector(".while-loop-block .inner-code-1");
-				innercode1.classList.add("curr-exec");
-				setTimeout(()=>{
-					innercode1.classList.remove("curr-exec");
-					let innercode2 = document.querySelector(".while-loop-block .inner-code-2");
-					innercode2.classList.add("curr-exec");
-					let inc = document.getElementById("while-inc");
-					inc.classList.add("curr-exec");
-					inc.innerText = parseFloat(inc.innerText)+1;
-					setTimeout(()=>{
-						innercode2.classList.remove("curr-exec");
-						inc.classList.remove("curr-exec");
-						startExec();
-					},2000);
-				},2000);
+				_condBlock.classList.remove("curr-exec");
+				startExec();
 			}
 			else
 			{
@@ -114,4 +114,5 @@ function resetBtn(){
 	whileBtn.innerHTML ="<i class='fa fa-play'></i>";
 	whileBtn.disabled = false;
 }
+
 
