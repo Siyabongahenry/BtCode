@@ -2,7 +2,6 @@ import findVariables from "./variables.js";
 import {sepValFromOper} from "./site.js";
 import {condCollectorSL,solveCondition} from "./solve-cond.js"
 
-var whileBtn = document.getElementById("while-btn");
 //execution time
 var exec_time = 2000;
 //variables outside for loop
@@ -13,24 +12,27 @@ var screen;
 var outputMSG
 //initial consition
 var initialCond;
-let currentCond;
+var currentCond;
 var condCollector =[];
 //condition block
 var condBlock;
 var variablesArr =[];
 var conditionArr =[];
+
+var whileBtn = document.querySelector(".while-block .start-btn");
+
 export default function setWhileLoop()
 {
 	whileBtn.addEventListener("click",function(){
-		this.innerHTML ="<i class='fa fa-pause'></i>";
-		this.disable = true;
+		this.innerHTML ="<i class='fa fa-pause'></i> stop";
+		this.disabled = true;
 		//clear out put screen
-		screen = document.querySelector(".while-loop-block .output-screen");
+		screen = document.querySelector(".while-block .display-screen");
 		screen.innerHTML ="";
 		//message to be outputed in the screen container
-		outputMSG = document.getElementById("while-output-msg").innerText;
+		outputMSG = document.querySelector(".while-block .output-msg").innerText;
 		//
-		condBlock = document.getElementById("while-cond");
+		condBlock = document.querySelector(".while-block .cond");
 		//store initial condition to return to it
 		initialCond = condBlock.innerText;
 		currentCond = initialCond;
@@ -44,9 +46,8 @@ function startExec(){
 	conditionArr =[];
 	condCollector = [];
 
-	varsBlock = document.getElementById("while-vars");
+	varsBlock = document.querySelector(".while-block .vars-container");
 	variablesArr =findVariables(varsBlock.innerText).flat();
-
 	currentCond = currentCond.replaceAll(" ","");
 	//separate values from operations
 	conditionArr = sepValFromOper(conditionArr,currentCond);
@@ -80,11 +81,11 @@ function showSteps(count,_condBlock){
 			if(cond == "true")
 			{
 				execInnerC();
-				let innercode1 = document.querySelector(".while-loop-block .inner-code-1");
+				let innercode1 = document.querySelector(".while-block .inner-code-1");
 				innercode1.classList.add("curr-exec");
 				setTimeout(()=>{
 					innercode1.classList.remove("curr-exec");
-					let innercode2 = document.querySelector(".while-loop-block .inner-code-2");
+					let innercode2 = document.querySelector(".while-block .inner-code-2");
 					innercode2.classList.add("curr-exec");
 					let inc = document.getElementById("while-inc");
 					inc.classList.add("curr-exec");
@@ -111,7 +112,7 @@ function execInnerC(){
 
 }
 function resetBtn(){
-	whileBtn.innerHTML ="<i class='fa fa-play'></i>";
+	whileBtn.innerHTML ="<i class='fa fa-play'></i> start";
 	whileBtn.disabled = false;
 }
 

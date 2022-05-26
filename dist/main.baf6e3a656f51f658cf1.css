@@ -4,10 +4,11 @@
 * {
   box-sizing: border-box; }
 
-.comments code {
+.comments {
   color: green;
   font-size: 11px;
-  font-weight: normal; }
+  font-weight: normal;
+  display: block; }
 
 .btn-hide-container {
   text-align: center;
@@ -360,24 +361,22 @@ nav {
   .container .variables-container {
     padding: 2% 0%; }
   .container .code-menu {
-    text-align: center;
+    text-align: left;
     padding: 1%; }
     .container .code-menu code {
       color: green; }
     .container .code-menu button {
       border: none;
-      background-color: #0d0a36;
-      color: white;
-      width: 30px;
-      height: 30px;
-      line-height: 30px;
+      border: 1px solid #0d0a36;
       text-align: center;
-      border-radius: 50%; }
+      background-color: white; }
+      .container .code-menu button i {
+        color: #0d0a36; }
       .container .code-menu button:hover {
         color: blue;
         opacity: 0.8; }
   .container .code {
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: 900;
     text-align: left;
     color: #0d0a36;
@@ -399,19 +398,27 @@ nav {
     .container .code .curr-exec {
       color: green;
       text-shadow: 2px 2px 1px yellow; }
-  .container .output-screen {
-    background-color: black;
-    color: white;
-    height: 160px;
-    line-height: 20px;
-    width: 100%;
-    font-weight: bold;
-    padding: 1%;
-    padding-left: 2%;
-    overflow-x: hidden;
-    overflow-y: scroll; }
-    .container .output-screen span {
-      display: block; }
+  .container .console-window {
+    margin: 2%;
+    box-shadow: -2px -2px 2px silver,2px 2px 2px silver; }
+    .container .console-window h3 {
+      text-align: left;
+      margin: 0;
+      background-color: white;
+      color: black;
+      font-weight: normal;
+      border-radius: 0; }
+    .container .console-window .display-screen {
+      background-color: black;
+      color: white;
+      height: 140px;
+      line-height: 20px;
+      padding: 1%;
+      padding-left: 2%;
+      overflow-x: hidden;
+      overflow-y: scroll; }
+      .container .console-window .display-screen span {
+        display: block; }
   .container .explanations {
     margin-top: 2%;
     padding: 1%;

@@ -63,7 +63,7 @@ function addEventsToBtnHide(){
 	for(let i=0;i < btnsHide.length;i++){
 		btnsHide[i].addEventListener("click",function(){
 
-			let content = document.getElementById(this.getAttribute("data-notes-id"));
+			let content = document.querySelector(this.getAttribute("data-query"));
 			if(content.style.display == "none"){
 				content.style.display = "initial";
 				this.innerHTML = "close notes <i class='fa fa-caret-up'></i>";

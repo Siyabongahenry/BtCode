@@ -2,13 +2,8 @@ import findVariables from "./variables.js";
 import {sepValFromOper} from "./site.js";
 import {condCollectorSL,solveCondition} from "./solve-cond.js"
 
-var ifBtn = document.getElementById("if-btn");
-var varsBlock =document.getElementById("if-vars");
-var innerCode = document.getElementById("if-inner-code"); 
-var btnElse = document.getElementById("btn-add-else");
-var elseBlock = document.getElementById("else-statement");
 var condBlock;
-var outPutScreenMSG;
+var screen;
 var outputMSG;
 var else_outputMSG;
 var variablesArr =[];
@@ -17,6 +12,13 @@ var conditionArr =[];
 var condCollector =[];
 var initialCond;
 let currentCond;
+
+var ifBtn = document.querySelector(".if-block .start-btn");
+var varsBlock =document.querySelector(".if-block .vars-container ");
+var innerCode = document.querySelector(".if-block .inner-code"); 
+var btnElse = document.querySelector(".if-block .else-btn");
+var elseBlock = document.querySelector(".if-block .else");
+
 export default function setIfStatement()
 {
 	ifBtn.addEventListener("click",function(){
@@ -25,19 +27,19 @@ export default function setIfStatement()
 		conditionArr =[];
 		condCollector = [];
 
-		this.innerHTML ="<i class='fa fa-pause'></i>";
+		this.innerHTML ="<i class='fa fa-pause'></i> stop";
 		this.disabled = true;
 
 		//message to be outputed in the screen container
-		outputMSG = document.getElementById("if-output-msg").innerText;
-		else_outputMSG = document.getElementById("else-output-msg").innerText;
+		outputMSG = document.querySelector(".if-block .output-msg").innerText;
+		else_outputMSG = document.querySelector(".if-block .else .output-msg").innerText;
 		//clear out put screen
-		outPutScreenMSG = document.getElementById("if-screen-msg");
-		outPutScreenMSG.innerText="";
+		screen = document.querySelector(".if-block .display-screen");
+		screen.innerText="";
 		//get variables from container
 		variablesArr =findVariables(varsBlock.innerText).flat();
 
-		condBlock = document.getElementById("if-cond");
+		condBlock = document.querySelector(".if-block .cond");
 		initialCond = condBlock.innerText;
 		currentCond = initialCond;
 		startExec();	
@@ -94,16 +96,16 @@ function showSteps(count,_condBlock){
 //execute inner code
 function execInnerC(isExec){
 	if(isExec){
-		outPutScreenMSG.innerText = outputMSG;
+		screen.innerText = outputMSG;
 	}
 	else{
 		if(elseBlock.style.display !="none"){
-			outPutScreenMSG.innerText = else_outputMSG;
+			screen.innerText = else_outputMSG;
 		}
 	}
 }
 function resetBtn(){
-	ifBtn.innerHTML ="<i class='fa fa-play'></i>";
+	ifBtn.innerHTML ="<i class='fa fa-play'></i> start";
 	ifBtn.disabled = false;
 }
 

@@ -36,106 +36,115 @@
         <h1>Welcome To BtCode</h1>
         <div class="if-block">
             <h2>IF STATEMENT</h2>
-            <div class="code-menu">
-                <div class="comments">
-                    <code>/*Use this button to execute the code*/</code>
-                </div>
-                <div>
-                    <button id="if-btn"><i class="fa fa-play"></i></button>
-                </div>
-                <div>
-                    <label for="">
-                        <input type="checkbox"> show full solution
-                    </label>
-                </div>
-            </div>
-            <div class="code">
-                <div class="comments">
-                    <code>//the variables are editable but not the data types</code>
-                </div>
-                <div class="vars-container editable-elem" 
-                id="if-vars">
-                    <span>
-                        <span class="data-type">int</span>&nbsp;
-                        <span class="txt-darkred editable-elem" contenteditable>n = 3</span>;
-                    </span>
-                    <br>
-                    <span>
-                        <span class="data-type">int</span>&nbsp;
-                        <span class="txt-darkred editable-elem" contenteditable>m = 6</span>;
-                    </span>
-                </div>
-                <div>
-                    <div class="comments">
-                        <code>//the condition is editable</code>
-                    </div>
-                    <div>
-                        if(
-                        <span class="cond editable-elem" id="if-cond" contenteditable="true">
-                            n > 0
-                      </span> 
-                        ){
-                    </div>
-                    <div>
-                        <div class="comments">
-                            <code>//the output text is editable</code>
+            <div class="row">
+                <div class="column">
+                    <div class="code-menu">  
+                        <code class="comments">/*Use this button to execute the code*/</code>
+                        <div>
+                            <button class="start-btn">
+                                <i class="fa fa-play"></i> start
+                            </button>
                         </div>
-                        <div class="inner-code" id="if-inner-code">
+                    </div>
+                    <div class="code">
+                       
+                        <code class="comments">
+                            /*the variables are editable but not the data types*/
+                        </code>
+                       
+                        <div class="vars-container">
+                            <code>
+                                <span class="data-type">int</span>&nbsp;
+                                <span class="txt-darkred editable-elem" contenteditable>n = 3</span>;
+                            </code>
+                            <br>
+                            <code>
+                                <span class="data-type">int</span>&nbsp;
+                                <span class="txt-darkred editable-elem" contenteditable>m = 6</span>;
+                            </code>
+                        </div>
+                        <div>
+                            <code class="comments">/*the condition is editable*/</code>
                             <div>
-                                <span class="print-method">
-                                    Console.WriteLine
-                                </span>
-                                (
-                                    <q>
-                                        <span contenteditable class="output-msg editable-elem" 
-                                        id="if-output-msg">
-                                                Hello world
-                                        </span>
-                                    </q>
-                                );
+                                <code>
+                                    if(
+                                    <span class="cond editable-elem"
+                                    contenteditable="true">
+                                        n > 0
+                                  </span> 
+                                    ){
+                                </code>
+                            </div>
+                            <div>    
+                                <code class="comments">//the output text is editable</code>
+                                <div class="inner-code">
+                                    <div>
+                                        <code>
+                                            <span class="print-method">
+                                                Console.WriteLine
+                                            </span>
+                                            (
+                                                <q>
+                                                    <span class="output-msg editable-elem" 
+                                                    contenteditable>
+                                                         Hello world
+                                                    </span>
+                                                </q>
+                                            );
+                                        </code>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                }
                             </div>
                         </div>
-                    </div>
-                    <div>
-                        }
+                        <div class="else" style="display:none;">
+                            <div>
+                                <code>else</code>
+                            </div>
+                            <div>
+                            {
+                            </div>
+                            <div>
+                                <div class="inner-code">
+                                    <code class="print-method">
+                                        Console.WriteLine
+                                    </code>
+                                    (
+                                        <q>
+                                            <span contenteditable class="output-msg" >
+                                                    Good bye world
+                                            </span>
+                                        </q>
+                                    );
+                                </div>
+                            </div>
+                            <div>
+                            } 
+                            </div>
+                        </div>
+                        <button class="else-btn">
+                            <i class="fa fa-plus"></i> else
+                        </button>
                     </div>
                 </div>
-                <div id="else-statement" style="display:none;">
-                    <div>
-                    else
-                    </div>
-                    <div>
-                    {
-                    </div>
-                    <div>
-                        <div class="inner-code" id="else-inner-code">
-                            <span class="print-method">
-                                Console.WriteLine
-                            </span>
-                            (
-                                <q>
-                                    <span contenteditable class="output-msg" 
-                                    id="else-output-msg">
-                                            Good bye world
-                                    </span>
-                                </q>
-                            );
+                <div class="column">
+                    <div class="console-window">
+                        <h3>console</h3>
+                        <div class="display-screen" >
+                            <span id="if-screen-msg"></span>
                         </div>
                     </div>
-                    <div>
-                    } 
-                    </div>
                 </div>
-                <button id="btn-add-else"><i class="fa fa-plus"></i> else</button>
-            </div>
-            <div class="output-screen" >
-                <span id="if-screen-msg"></span>
             </div>
             <div class="notes">
                 <div class="btn-hide-container">
-                    <button class="btn-hidden-content" data-notes-id="if-notes">See Notes <i class="fa fa-caret-down"></i></button>
+                    <button class="btn-hidden-content" data-query=".if-block .notes .content">
+                        See Notes <i class="fa fa-caret-down"></i>
+                    </button>
                 </div>
-                <div id="if-notes" style="display:none;">
+                <div class="content" style="display:none;">
                     <div class="explanations slide-element">
                         <h3>Logic table</h3>
                         <table>
@@ -177,191 +186,210 @@
                 </div>
             </div> 
         </div>
-        <div class="while-loop-block">
+        <div class="while-block">
             <h2>WHILE LOOP</h2>
-            <div class="code-menu">
-                <div>
-                    <button id="while-btn"><i class="fa fa-play"></i></button>
-                </div>
-                <div>
-                    <label for="">
-                        <input type="checkbox"> show full solution
-                    </label>
-                </div>
-            </div>
-            <div class="code">
-                <div class="vars-container" id="while-vars">
-                    <span>
-                        <span class="data-type">int</span>&nbsp;
-                        <span class="txt-darkred" >n = &nbsp;
-                        <span class="txt-center editable-elem" contenteditable id="while-inc" >1
-                        </span>;
-                        </span>
-                    </span>
-                </div>
-                <div>
-                    while(
-                    <span class="cond txt-darkred editable-elem" id="while-cond" contenteditable>
-                        n < 3
-                    </span>
-                    ){
-                </div>
-                <div class="inner-code">
-                    <div class="inner-code-1">
-                        <span class="print-method">
-                            Console.WriteLine
-                        </span>
-                        (
-                            <q>
-                                <span contenteditable class="output-msg editable-elem" 
-                                id="while-output-msg">
-                                        Hello World
+            <div class="row">
+                <div class="column">
+                    <div class="code-menu">
+                        <div>
+                            <button class="start-btn">
+                                <i class="fa fa-play"></i> start
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code">
+                        <div class="vars-container">
+                            <code>
+                                <span class="data-type">int</span>&nbsp;
+                                <span class="txt-darkred" >n = &nbsp;
+                                <span class="txt-center editable-elem" contenteditable
+                                 id="while-inc" >1
+                                </span>;
                                 </span>
-                            </q>
-                        );
-                    </div>
-                    <div class="comments">
-                        <code>//n++ increment n by 1</code>
-                    </div>
-                    <div>
-                       <span class="txt-darkred inner-code-2">n++</span>;
+                            </code>
+                        </div>
+                        <div>
+                            <code>
+                                while(
+                                <span class="cond editable-elem" contenteditable>
+                                    n < 3
+                                </span>
+                                ){
+                            </code>
+                        </div>
+                        <div class="inner-code">
+                            <div class="inner-code-1">
+                                <code>
+                                    <span class="print-method">
+                                        Console.WriteLine
+                                    </span>
+                                    (
+                                        <q>
+                                            <span contenteditable class="output-msg editable-elem" 
+                                            id="while-output-msg">
+                                                    Hello World
+                                            </span>
+                                        </q>
+                                    );
+                                </code>
+                            </div>
+                            <code class="comments">//n++ increment n by 1</code> 
+                            <div>
+                               <code class="txt-darkred inner-code-2">n++</code>;
+                            </div>
+                        </div>
+                        <div>
+                            }
+                        </div>
                     </div>
                 </div>
-                <div>
-                    }
+                <div class="column">
+                    <div class="console-window">
+                        <h3>console</h3>
+                        <div class="display-screen" >
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="output-screen" >
             </div>
         </div>
         <div class="do-while-block">
             <h2>DO WHILE LOOP</h2>
-            <div class="code-menu">
-                <div>
-                    <button id="do-while-btn"><i class="fa fa-play"></i></button>
-                </div>
-                <div>
-                    <label for="">
-                        <input type="checkbox"> show full solution
-                    </label>
-                </div>
-            </div>
-            <div class="code">
-                <div class="comments">
-                    <code>//click the number to change the value</code>
-                </div>
-                <div class="vars-container" id="do-vars">
-                    <span>
-                        <span class="data-type">int</span>&nbsp;
-                        <span class="txt-darkred" >n = 
-                            <span class="txt-center editable-elem" contenteditable 
-                            id="do-inc" >1</span>;
-                        </span>
-                    </span>
-                </div>
-                <div>
-                    do
-                </div>
-                <div>
-                    {
-                </div>
-                <div class="inner-code">
-                    <div class="inner-code-1">
-                        <span class="print-method">
-                            Console.WriteLine
-                        </span>
-                        (
-                            <q>
-                                <span contenteditable class="output-msg editable-elem" 
-                                id="do-output-msg">
-                                        Hello World
+            <div class="row">
+                <div class="column">
+                    <div class="code-menu">
+                        <div>
+                            <button class="start-btn" id="do-while-btn"><i class="fa fa-play"></i> start</button>
+                        </div>
+                    </div>
+                    <div class="code">
+                        <code class="comments">//click the number to change the value</code>
+                        <div class="vars-container" id="do-vars">
+                            <code>
+                                <span class="data-type">int</span>&nbsp;
+                                <span class="txt-darkred" >n = 
+                                    <span class="txt-center editable-elem" contenteditable 
+                                    id="do-inc" >1</span>;
                                 </span>
-                            </q>
-                        );
+                            </code>
+                        </div>
+                        <div>
+                            <code>do</code>
+                        </div>
+                        <div>
+                            {
+                        </div>
+                        <div class="inner-code">
+                            <div class="inner-code-1">
+                                <code>
+                                    <span class="print-method">
+                                        Console.WriteLine
+                                    </span>
+                                    (
+                                        <q>
+                                            <span contenteditable class="output-msg editable-elem" >
+                                                    Hello World
+                                            </span>
+                                        </q>
+                                    );
+                                </code>
+                            </div>
+                            <code class="comments">//n++ increment n by 1</code>
+                            <div>
+                               <span class="txt-darkred inner-code-2">n++</span>;
+                            </div>  
+                        </div>
+                        <div>
+                            }
+                        </div>
+                        <div>
+                            <code>
+                                while(
+                                <span class="cond txt-darkred editable-elem" contenteditable>
+                                    n < 3
+                                </span>
+                                ); 
+                            </code>
+                        </div>   
                     </div>
-                    <div class="comments">
-                        <code>//n++ increment n by 1</code>
+                </div>
+                <div class="column">
+                    <div class="console-window">
+                        <h3>console</h3>
+                        <div class="display-screen" >
+                        </div>
                     </div>
-                    <div>
-                       <span class="txt-darkred inner-code-2">n++</span>;
-                    </div>  
                 </div>
-                <div>
-                    }
-                </div>
-                <div>
-                    while(
-                    <span class="cond txt-darkred editable-elem" id="do-while-cond" contenteditable>
-                        n < 3
-                    </span>
-                    ); 
-                </div>
-                
-                
-            </div>
-            <div class="output-screen" >
             </div>
         </div>
         <div class="for-loop-block">
             <h2>FOR LOOP</h2>
-            <div class="code-menu">
-                <div>
-                    <button id="for-btn"><i class="fa fa-play"></i></button>
-                </div>
-                <div>
-                    <label for="">
-                        <input type="checkbox"> show full solution
-                    </label>
-                </div>
-            </div>
-            <div class="code">
-                <div class="vars-container">
-                    
-                </div>
-                <div class="comments">
-                    <code>//i++ increment i by 1</code>
-                </div>
-                <div>
-                    for(
-                    <span class="cond" id="for-var">
-                        <span class="data-type">int</span>&nbsp;i&nbsp;=&nbsp;
-                        <span id="for-value" contenteditable class="editable-elem">0</span>
-                    </span>;
-                    <span class="cond editable-elem" id="for-cond" contenteditable>
-                        i < 3
-                    </span>;
-                    <span class="cond" id="last-cond">
-                        i++
-                    </span>
-                    ){
-                </div>
-                <div class="inner-code">
-                    <div>
-                        <span class="print-method">
-                            Console.WriteLine
-                        </span>
-                        (
-                            <q>
-                                <span contenteditable class="output-msg editable-elem">
-                                        Hello World
+            <div class="row">
+                <div class="column">
+                    <div class="code-menu">
+                        <div>
+                            <button class="start-btn" id="for-btn">
+                                <i class="fa fa-play"></i> start
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code">
+                        <div class="vars-container">
+                            
+                        </div>
+                        <code class="comments">//i++ increment i by 1</code>
+                        <div>
+                            <code>
+                                for(
+                                <span class="cond" id="for-var">
+                                    <span class="data-type">int</span>&nbsp;i&nbsp;=&nbsp;
+                                    <span id="for-value" contenteditable class="editable-elem">0
+                                    </span>
+                                </span>;
+                                <span class="cond editable-elem" id="for-cond" contenteditable>
+                                    i < 3
+                                </span>;
+                                <span class="cond" id="last-cond">
+                                    i++
                                 </span>
-                            </q>
-                        );
+                                ){
+                            </code>
+                        </div>
+                        <div class="inner-code">
+                            <div>
+                                <code>
+                                    <span class="print-method">
+                                        Console.WriteLine
+                                    </span>
+                                    (
+                                        <q>
+                                            <span contenteditable class="output-msg editable-elem">
+                                                    Hello World
+                                            </span>
+                                        </q>
+                                    );
+                                </code>
+                            </div>
+                        </div>
+                        <div>
+                            }
+                        </div>     
                     </div>
                 </div>
-                <div>
-                    }
-                </div>
-                <div class="output-screen" >
-                </div>
+                <div class="column">
+                    <div class="console-window">
+                        <h3>console</h3>
+                        <div class="display-screen" >
+                        </div>
+                    </div>
+                </div>     
             </div>
-            <div>
+            <div class="notes">
                 <div class="btn-hide-container">
-                    <button class="btn-hidden-content" data-notes-id="for-notes">
+                    <button class="btn-hidden-content" data-query=".for-block .notes .content">
                         see Notes <i class="fa fa-caret-down"></i>
                     </button>
                 </div>
-                <div id="for-notes" style="display:none">    
+                <div class="content" style="display:none">    
                     <div class="explanations">         
                         <h3>What to know about a for loop?</h3> 
                         <ul>

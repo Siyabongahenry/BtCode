@@ -130,20 +130,19 @@ nav{
         padding:2% 0%;
     }
     .code-menu{
-        text-align:center;
+        text-align:left;
         padding:1%;
         code{
             color:green;
         }
         button{
             border:none;
-            background-color:$theme-color;
-            color:white;
-            width:30px;
-            height:30px;
-            line-height:30px;
+            border:1px solid $theme-color;
             text-align:center;
-            border-radius:50%;
+            background-color:white;
+            i{
+                color:$theme-color;
+            }
             &:hover{
                 color:blue;
                 opacity:0.8;
@@ -151,7 +150,7 @@ nav{
         }
     }
     .code{
-        font-size:1.125rem;
+        font-size:1rem;
         font-weight:900;
         text-align:left;
         color:$theme-color;
@@ -182,13 +181,22 @@ nav{
             text-shadow:2px 2px 1px yellow;
         }
     }
-    .output-screen{
+    .console-window{
+        margin:2%;    
+        box-shadow:-2px -2px 2px silver,2px 2px 2px silver;
+        h3{
+            text-align:left;
+            margin:0;
+            background-color:white;
+            color:black;
+            font-weight:normal;
+            border-radius:0;
+        }
+        .display-screen{
         background-color:black;
         color:white;
-        height:160px;
+        height:140px;
         line-height:20px;
-        width:100%;
-        font-weight:bold;
         padding:1%;
         padding-left:2%;
         overflow-x:hidden;
@@ -197,6 +205,8 @@ nav{
             display:block;
         }
     }
+    }
+    
     .explanations{
         margin-top:2%;
         padding:1%;
