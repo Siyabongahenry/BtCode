@@ -76,33 +76,32 @@ function showSteps(count,_condBlock){
 	}
 	else{
 		let cond = condCollector[count-1].toString().replaceAll(","," ");
-		_condBlock.classList.remove("curr-exec");
-		setTimeout(()=>{
-			if(cond == "true")
-			{
-				execInnerC();
-				let innercode1 = document.querySelector(".while-block .inner-code-1");
-				innercode1.classList.add("curr-exec");
+		_condBlock.classList.remove("curr-exec");	
+		if(cond == "true")
+		{
+			let innercode1 = document.querySelector(".while-block .inner-code-1");
+			innercode1.classList.add("curr-exec");
+			execInnerC();
+			setTimeout(()=>{
+				innercode1.classList.remove("curr-exec");
+				let innercode2 = document.querySelector(".while-block .inner-code-2");
+				innercode2.classList.add("curr-exec");
+				let inc = document.getElementById("while-inc");
+				inc.classList.add("curr-exec");
+				inc.innerText = parseFloat(inc.innerText)+1;
 				setTimeout(()=>{
-					innercode1.classList.remove("curr-exec");
-					let innercode2 = document.querySelector(".while-block .inner-code-2");
-					innercode2.classList.add("curr-exec");
-					let inc = document.getElementById("while-inc");
-					inc.classList.add("curr-exec");
-					inc.innerText = parseFloat(inc.innerText)+1;
-					setTimeout(()=>{
-						innercode2.classList.remove("curr-exec");
-						inc.classList.remove("curr-exec");
-						startExec();
-					},2000);
+					innercode2.classList.remove("curr-exec");
+					inc.classList.remove("curr-exec");
+					startExec();
 				},2000);
-			}
-			else
-			{
-				resetBtn();
-				_condBlock.innerText = condCollector[0].toString().replaceAll(","," ");
-			}
-		},2000);	
+			},2000);
+		}
+		else
+		{
+			resetBtn();
+			_condBlock.innerText = condCollector[0].toString().replaceAll(","," ");
+		}
+	
 	}
 }
 //execute inner code

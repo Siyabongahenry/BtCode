@@ -27,8 +27,7 @@
 
 h1, h2, h3, h4 {
   text-align: center;
-  background-color: #0d0a36;
-  border-radius: 25px;
+  background-color: #040931;
   font-weight: bold;
   padding: 1%;
   color: white;
@@ -76,7 +75,7 @@ h1, h2, h3, h4 {
   color: green; }
 
 .txt-theme {
-  color: #0d0a36; }
+  color: #040931; }
 
 .d-inline-b {
   display: inline-block; }
@@ -96,7 +95,7 @@ h1, h2, h3, h4 {
     color: black; }
 
 .message-box {
-  background-color: #0d0a36;
+  background-color: #040931;
   display: inline-block;
   color: white;
   margin-top: 5px;
@@ -114,10 +113,10 @@ h1, h2, h3, h4 {
   left: -10px;
   width: 0;
   height: 0;
-  border-top: 5px solid #0d0a36;
+  border-top: 5px solid #040931;
   border-bottom: 5px solid transparent;
   border-left: 5px solid transparent;
-  border-right: 5px solid #0d0a36; }
+  border-right: 5px solid #040931; }
 
 .number {
   display: inline-block;
@@ -162,7 +161,7 @@ h1, h2, h3, h4 {
       overflow: hidden; }
       .slide-container .slide-progress .progress-container .progress {
         display: block;
-        background-color: #0d0a36;
+        background-color: #040931;
         height: 100%; }
     .slide-container .slide-progress .progress-bars-h {
       display: flex;
@@ -198,7 +197,7 @@ h1, h2, h3, h4 {
     overflow: auto;
     text-align: center; }
     .slide-container .slide-nav button {
-      background-color: #0d0a36;
+      background-color: #040931;
       color: white;
       border: none;
       font-size: 1rem; }
@@ -220,7 +219,7 @@ h1, h2, h3, h4 {
   .typing-alert > span {
     display: inline-block;
     border-radius: 50%;
-    background-color: #0d0a36; }
+    background-color: #040931; }
     .typing-alert > span:first-child {
       height: 8px;
       width: 8px; }
@@ -287,8 +286,10 @@ nav {
   nav button {
     border: none;
     font-size: inherit; }
+    nav button:focus {
+      border: 0; }
   nav a:hover, nav button:hover {
-    background-color: #0d0a36 !important;
+    background-color: #040931 !important;
     color: white !important;
     outline: none !important; }
   nav .top-menu {
@@ -310,7 +311,7 @@ nav {
     nav .top-menu .logo {
       text-shadow: 1px 1px 1px silver; }
       nav .top-menu .logo span:first-child {
-        color: #0d0a36; }
+        color: #040931; }
       nav .top-menu .logo span:last-child {
         color: black; }
   nav .side-menu {
@@ -327,7 +328,7 @@ nav {
     overflow-x: hidden;
     width: 100%; }
     nav .side-menu .header {
-      background-color: #0d0a36;
+      background-color: #040931;
       color: white;
       padding: 1%;
       font-weight: 900;
@@ -341,7 +342,7 @@ nav {
       width: 100%;
       text-align: left;
       font-weight: bold;
-      color: #0d0a36;
+      color: #040931;
       background-color: white; }
     nav .side-menu ul a, nav .side-menu ul button {
       padding-left: 10%; }
@@ -367,11 +368,11 @@ nav {
       color: green; }
     .container .code-menu button {
       border: none;
-      border: 1px solid #0d0a36;
+      border: 1px solid #040931;
       text-align: center;
       background-color: white; }
       .container .code-menu button i {
-        color: #0d0a36; }
+        color: #040931; }
       .container .code-menu button:hover {
         color: blue;
         opacity: 0.8; }
@@ -379,7 +380,7 @@ nav {
     font-size: 1rem;
     font-weight: 900;
     text-align: left;
-    color: #0d0a36;
+    color: #040931;
     padding: 1%; }
     .container .code .vars-container:focus {
       outline: none; }
@@ -453,13 +454,13 @@ nav {
     background-color: white; }
   100% {
     color: white;
-    background-color: #0d0a36; } }
+    background-color: #040931; } }
 
 @keyframes typing-alert {
   0% {
     width: 8px;
     height: 8px;
-    background-color: #0d0a36; }
+    background-color: #040931; }
   100% {
     width: 24px;
     height: 24px;
@@ -475,7 +476,7 @@ nav {
   0% {
     width: 0; }
   100% {
-    background-color: #0d0a36;
+    background-color: #040931;
     width: 100%; } }
 
 @keyframes progressBarHeight {
@@ -483,7 +484,7 @@ nav {
     height: 0;
     margin-top: 100%; }
   50% {
-    background-color: #0d0a36; }
+    background-color: #040931; }
   100% {
     height: 100%;
     margin-top: 0%;

@@ -61,15 +61,13 @@ function startExec(){
 	currentCond = currentCond.replaceAll(" ","");
 	//separate values from operations
 	conditionArr = sepValFromOper(conditionArr,currentCond);
-	console.log(conditionArr);
 	//push first condition to array
 	condCollector.push([...conditionArr]);
 
 	conditionArr = solveCondition(conditionArr,variablesArr);
 
 	condCollector.push(...condCollectorSL);
-	
-	console.log(condCollector);
+
 	showSteps(0,condBlock);
 }
 
@@ -80,28 +78,46 @@ function showSteps(count,_condBlock){
 		setTimeout(()=>{
 			let cond = condCollector[count].toString().replaceAll(","," ");
 			_condBlock.innerText = cond;
+			if(!_condBlock.classList.contains("curr-exec"))
+			{
+				_condBlock.classList.add("curr-exec");
+			}
 			showSteps(count+1,_condBlock);
 		},2000);
 
 	}
 	else{
+		_condBlock.classList.remove("curr-exec");
+		
 		let cond = condCollector[count-1].toString().replaceAll(","," ");
-		execInnerC(cond=="true");
-		setTimeout(()=>{
-			resetBtn();
-			_condBlock.innerText = condCollector[0].toString().replaceAll(","," ");
-		},2000);	
-	}
-}
-//execute inner code
-function execInnerC(isExec){
-	if(isExec){
-		screen.innerText = outputMSG;
-	}
-	else{
-		if(elseBlock.style.display !="none"){
-			screen.innerText = else_outputMSG;
+		if(cond == "true")
+		{
+			let innerCode = document.querySelector(".if .inner-code");
+			innerCode.classList.add("curr-exec");
+			screen.innerText = outputMSG;
+			setTimeout(()=>{
+				resetBtn();
+				innerCode.classList.remove("curr-exec");
+				_condBlock.innerText = condCollector[0].toString().replaceAll(","," ");
+			},2000);	
 		}
+		else{
+			let innerCode = document.querySelector(".else .inner-code");
+			if(elseBlock.style.display !="none"){
+				screen.innerText = else_outputMSG;
+				innerCode.classList.add("curr-exec");
+				screen.innerText = outputMSG;	
+			}
+			setTimeout(()=>{
+				resetBtn();
+				if(innerCode.classList.contains("curr-exec"))
+				{
+					innerCode.classList.remove("curr-exec");
+				}
+				_condBlock.innerText = condCollector[0].toString().replaceAll(","," ");
+			},2000);	
+		}
+	
 	}
 }
 function resetBtn(){

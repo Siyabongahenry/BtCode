@@ -83,6 +83,7 @@ function showSteps(count,_condBlock){
 		let cond = condCollector[count-1].toString().replaceAll(","," ");
 		_condBlock.classList.remove("curr-exec");
 		setTimeout(()=>{
+			_condBlock.innerText = initialCond;
 			if(cond == "true")
 			{
 				execInnerC();

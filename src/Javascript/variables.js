@@ -39,7 +39,7 @@ function findNumbers(){
 	//pattern to find numbers variables
 	let patternNo = / +[a-zA-Z_]\w*\s*=\s*(\d{1,}\.\d{1,}|\d{1,})/;
 	let findNo = varsContAsStr.match(patternNo);
-
+    
 	if(findNo != null){
 		
 		let variable = findNo[0].toString();
