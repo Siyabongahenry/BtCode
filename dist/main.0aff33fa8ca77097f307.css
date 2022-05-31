@@ -377,7 +377,7 @@ nav {
         color: blue;
         opacity: 0.8; }
   .container .code {
-    font-size: 1rem;
+    font-size: 0.75rem;
     font-weight: 900;
     text-align: left;
     color: #040931;
@@ -490,35 +490,6 @@ nav {
     margin-top: 0%;
     background-color: yellow; } }
 
-@keyframes eyelid {
-  0% {
-    height: 100%; }
-  100% {
-    height: 10%; } }
-
-@keyframes pupil {
-  0% {
-    bottom: 100%; }
-  100% {
-    bottom: 0; } }
-
-@keyframes tear-fall {
-  0% {
-    top: 60px;
-    width: 5px;
-    height: 5px; }
-  100% {
-    top: 140px;
-    width: 20px;
-    height: 20px;
-    opacity: 0; } }
-
-@keyframes end-msg {
-  0% {
-    color: red; }
-  10% {
-    color: white; } }
-
 @media only screen and (min-width: 992px) {
   nav .side-menu {
     width: 20%; }
@@ -526,6 +497,8 @@ nav {
     margin-left: -20%; }
   .container {
     margin-left: 20%; }
+    .container .code {
+      font-size: 1rem; }
     .container .intro-paragraph {
       width: 70%;
       margin-left: 15%;
