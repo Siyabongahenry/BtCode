@@ -76,6 +76,7 @@ function showSteps(count,_condBlock){
 	}
 	else{
 		let cond = condCollector[count-1].toString().replaceAll(","," ");
+		_condBlock.innerText = cond;
 		_condBlock.classList.remove("curr-exec");	
 		if(cond == "true")
 		{
@@ -98,8 +99,10 @@ function showSteps(count,_condBlock){
 		}
 		else
 		{
-			resetBtn();
-			_condBlock.innerText = condCollector[0].toString().replaceAll(","," ");
+			setTimeout(()=>{
+				resetBtn();
+				_condBlock.innerText = condCollector[0].toString().replaceAll(","," ");
+			},2000)
 		}
 	
 	}
