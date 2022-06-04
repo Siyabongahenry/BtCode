@@ -106,7 +106,6 @@ function showSteps(count,_condBlock){
 			if(elseBlock.style.display !="none"){
 				screen.innerText = else_outputMSG;
 				innerCode.classList.add("curr-exec");
-				screen.innerText = outputMSG;	
 			}
 			setTimeout(()=>{
 				resetBtn();
