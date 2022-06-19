@@ -10,38 +10,53 @@
             <ul class="top-menu">
                 <li><button id="btn-side-menu" data-menu-id="side-menu"><i class="fa fa-bars"></i></button></li>
                 <li class="logo"><span>Bt</span><span>Code</span></li>
-                <li></li>
-                <li></li>
+                <li><a class="nav-btn" data-page-id="home-page"><i class="fa fa-home"></i></a></li>
+                <li><a class="nav-btn" data-page-id="about-page">About</a></li>
             </ul>
             <ul class="side-menu side-menu-ml" id="side-menu">
-                <li class="header">NAVIGATION</li>
-                <li><a href="#about">IF STATEMENT</a></li>
+                <li><a class="nav-btn" data-page-id="if-block">If Statement</a></li>
                  <li>
-                    <a href="#skills">WHILE LOOP</a>
+                    <a class="nav-btn" data-page-id="while-block">While Loop</a>
                 </li>
                 <li>
-                    <a href="#skills">DO WHILE LOOP</a>
+                    <a class="nav-btn" data-page-id="do-while-block">Do While Loop</a>
                 </li>
                 <li>
-                    <a href="#projects">FOR LOOP</a>
+                    <a class="nav-btn" data-page-id="for-loop-block">For Loop</a>
                 </li>
             </ul>
         </nav>
     </header>
-    <div class="container">
-        <h1>Welcome To BtCode</h1>
-        <p class="txt-center">
-            <i class="fa fa-info-circle"></i>
-            <i> Please notes: This program is currenctly under construction, errors are not handled, if you 
-                get any error please refresh the page.
-            </i> 
-        </p>
-        <div class="if-block">
-            <h2>IF STATEMENT</h2>
-            <div class="row">
-                <div class="column">
+    <div class="main-container container-fluid">
+        <div class="text-center text-warning">
+            <i class="fa fa-warning"></i> undercostruction
+        </div>
+        <div class="page" id="home-page">
+            <h1 class="text-center">Welcome To <span class="text-theme">Bt</span>Code</h1>
+            <p class="text-center">
+                BtCode is simply a tool that is design to help you understand coding better.
+                You will learn by running simulations. 
+            </p>
+
+            <div class="text-center">
+                <div class="anim-screen d-inline-block">
+                    <span class="nav-btn" data-page-id="if-block">if</span>
+                    <span class="nav-btn" data-page-id="while-block">while</span>
+                    <span class="nav-btn" data-page-id="do-while-block">do while</span>
+                    <span class="nav-btn" data-page-id="for-loop-block">for</span>
+                </div>
+            </div>
+            <div class="text-center p-2">
+                <div class="message-box">
+                    Now that you know, click <i class="fa fa-bars text-info"></i> on the menu to start learning.
+                </div>
+            </div>
+        </div>
+        <div class="page d-none" id="if-block">
+            <h1 class="text-center"><span class="text-theme">If</span> Statement</h1>
+            <div class="row program-container">
+                <div class="col-12 col-lg-6">
                     <div class="code-menu">  
-                        <code class="comments">/*Use this button to execute the code*/</code>
                         <div>
                             <button class="start-btn">
                                 <i class="fa fa-play"></i> start
@@ -57,12 +72,12 @@
                         <div class="vars-container">
                             <code>
                                 <span class="data-type">int</span>&nbsp;
-                                <span class="txt-darkred editable-elem" contenteditable>n = 3</span>;
+                                <span class="editable-elem variable" contenteditable>n = 3</span>;
                             </code>
                             <br>
                             <code>
                                 <span class="data-type">int</span>&nbsp;
-                                <span class="txt-darkred editable-elem" contenteditable>m = 6</span>;
+                                <span class="editable-elem variable" contenteditable>m = 6</span>;
                             </code>
                         </div>
                         <div>
@@ -126,72 +141,42 @@
                             } 
                             </div>
                         </div>
-                        <button class="else-btn">
+                        <button class="else-btn code-btn">
                             <i class="fa fa-plus"></i> else
                         </button>
                     </div>
+                    <div class="text-center">
+                        <div class="message-box" >
+                            <i class="fa fa-times text-danger float-end remove-elem-btn" data-element="#if-block .message-box"></i>
+                            You can change some part of the code above but some you can't. Once 
+                            the code starts executing, you cannot stop or pause the program.
+                            The program will stop once the if statement stop executing.
+                        </div>
+                    </div>
                 </div>
-                <div class="column">
+                <div class="col-12 col-lg-6">
                     <div class="console-window">
                         <h3>console</h3>
                         <div class="display-screen" >
                             <span id="if-screen-msg"></span>
                         </div>
                     </div>
+                    <div class="condition-solution container">
+                        <h3>
+                            Condition Solution
+                            <i class="fa fa-times text-danger float-end remove-elem-btn" data-element="#if-block .condition-solution"></i>
+                        </h3>
+                        <div class="steps-screen" id="if-cond-steps">
+
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="notes">
-                <div class="btn-hide-container">
-                    <button class="btn-hidden-content" data-query=".if-block .notes .content">
-                        See Notes <i class="fa fa-caret-down"></i>
-                    </button>
-                </div>
-                <div class="content" style="display:none;">
-                    <div class="explanations slide-element">
-                        <h3>Logic table</h3>
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <th>Logic</th>
-                                    <th>Condition</th>
-                                </tr>
-                                <tr>
-                                    <td>AND(&&)</td>
-                                    <td>
-                                        <span>true<span> && </span>true<span> = </span>true</span>
-                                        <span>true<span> && </span>false<span> = </span>false</span>
-                                        <span>false<span> && </span>true<span> = </span>false</span>  
-                                        <span>false<span> && </span>false<span> = </span>false</span> 
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>OR(||)</td>
-                                    <td>
-                                        <span>true <span> || </span>true<span> = </span>true</span>
-                                        <span>true <span> || </span>false<span> = </span>true</span>
-                                        <span>false <span> || </span>true<span> = </span>true</span>
-                                        <span>false <span> || </span>false<span> = </span>false</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        NOT(!)
-                                    </td>
-                                    <td>
-                                        <span><span>!</span>true<span> = </span>false</span>
-                                        <span><span>!</span>false<span> = </span>true</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>               
-                </div>
-            </div> 
         </div>
-        <div class="while-block">
-            <h2>WHILE LOOP</h2>
-            <div class="row">
-                <div class="column">
+        <div class="page d-none" id="while-block">
+            <h1 class="text-center"><span class="text-theme">While</span> Loop</h1>
+            <div class="row program-container">
+                <div class="col-12 col-lg-6">
                     <div class="code-menu">
                         <div>
                             <button class="start-btn">
@@ -203,7 +188,7 @@
                         <div class="vars-container">
                             <code>
                                 <span class="data-type">int</span>&nbsp;
-                                <span class="txt-darkred" >n = &nbsp;
+                                <span class="variable" >n = &nbsp;
                                 <span class="txt-center editable-elem" contenteditable
                                  id="while-inc" >1
                                 </span>;
@@ -244,8 +229,16 @@
                             }
                         </div>
                     </div>
+                    <div class="text-center">
+                        <div class="message-box" >
+                            <i class="fa fa-times text-danger float-end remove-elem-btn" data-element="#while-block .message-box"></i>
+                            You can change some part of the code above but some you can't. Once 
+                            the code starts executing, you cannot stop or pause the program.
+                            The program will stop once the while loop stop executing.
+                        </div>
+                    </div>
                 </div>
-                <div class="column">
+                <div class="col-12 col-lg-6">
                     <div class="console-window">
                         <h3>console</h3>
                         <div class="display-screen" >
@@ -254,10 +247,10 @@
                 </div>
             </div>
         </div>
-        <div class="do-while-block">
-            <h2>DO WHILE LOOP</h2>
-            <div class="row">
-                <div class="column">
+        <div class="page d-none" id="do-while-block">
+            <h1 class="text-center"><span class="text-theme">Do While</span> Loop</h1>
+            <div class="row program-container">
+                <div class="col-12 col-lg-6">
                     <div class="code-menu">
                         <div>
                             <button class="start-btn" id="do-while-btn"><i class="fa fa-play"></i> start</button>
@@ -268,7 +261,7 @@
                         <div class="vars-container" id="do-vars">
                             <code>
                                 <span class="data-type">int</span>&nbsp;
-                                <span class="txt-darkred" >n = 
+                                <span class="txt-darkred variable" >n = 
                                     <span class="txt-center editable-elem" contenteditable 
                                     id="do-inc" >1</span>;
                                 </span>
@@ -313,8 +306,16 @@
                             </code>
                         </div>   
                     </div>
+                    <div class="text-center">
+                        <div class="message-box" >
+                            <i class="fa fa-times text-danger float-end remove-elem-btn" data-element="#do-while-block .message-box"></i>
+                            You can change some part of the code above but some you can't. Once 
+                            the code starts executing, you cannot stop or pause the program.
+                            The program will stop once the do while loop stop executing.
+                        </div>
+                    </div>
                 </div>
-                <div class="column">
+                <div class="col-12 col-lg-6">
                     <div class="console-window">
                         <h3>console</h3>
                         <div class="display-screen" >
@@ -323,10 +324,10 @@
                 </div>
             </div>
         </div>
-        <div class="for-loop-block">
-            <h2>FOR LOOP</h2>
-            <div class="row">
-                <div class="column">
+        <div class="page d-none" id="for-loop-block">
+            <h1 class="text-center"><span class="text-theme">For</span> Loop</h1>
+            <div class="row program-container">
+                <div class="col-12 col-lg-6">
                     <div class="code-menu">
                         <div>
                             <button class="start-btn" id="for-btn">
@@ -343,8 +344,11 @@
                             <code>
                                 for(
                                 <span class="cond" id="for-var">
-                                    <span class="data-type">int </span>i =&nbsp;
-                                    <span id="for-value" contenteditable class="editable-elem">0
+                                    <span class="data-type">int </span>
+                                    <span class="variable">
+                                        i =&nbsp;
+                                        <span id="for-value" contenteditable class="editable-elem">0
+                                        </span>
                                     </span>
                                 </span>;
                                 <span class="cond editable-elem" id="for-cond" contenteditable>
@@ -376,19 +380,49 @@
                             }
                         </div>     
                     </div>
+                    <div class="text-center">
+                        <div class="message-box" >
+                            <i class="fa fa-times text-danger float-end remove-elem-btn" data-element="#for-loop-block .message-box"></i>
+                            You can change some part of the code above but some you can't. Once 
+                            the code starts executing, you cannot stop or pause the program.
+                            The program will stop once the for loop stop executing.
+                        </div>
+                    </div>
                 </div>
-                <div class="column">
+                <div class="col-12 col-lg-6">
                     <div class="console-window">
                         <h3>console</h3>
                         <div class="display-screen" >
                         </div>
                     </div>
                 </div>     
+            </div>  
+        </div>
+        <div class="page d-none" id="about-page">
+            <div class="container text-center">
+                <h1>About</h1>
+                <p>
+                    This website is brought to you by S.H Vilakazi, an independent web developer.
+                </p>
+                <p>
+                    The aim of this website is to make coding simple as possible. 
+                </p>
             </div>
         </div>
         <footer>
-            <div class="txt-center txt-darkred">Email:vilakazish23@gmail.com</div>
-            <div class="txt-center txt-blue">copy right</div>
+            <div>
+                <span class="badge bg-black text-white">LinkedIn</span><br>
+                <a href="https://www.linkedin.com/in/siyabonga-vilakazi-9a413123a" target="_blank">https://www.linkedin.com/in/siyabonga-vilakazi-9a413123a</a>
+            </div>
+            <div>
+                <span class="badge bg-black text-white">GitHub</span><br>
+                <a href="https://github.com/Siyabongahenry" target="_blank"> https://github.com/Siyabongahenry</a>
+            </div>
+            <div>
+                <span class="badge bg-black text-white"><i class="fa fa-envelope"></i> Email</span><br>
+                <a href="mailto:vilakazish@gmail.com" target="_blank"> vilakazish23@gmail.com</a>
+            </div>
+            <div><small>&copy; S.H Vilakazi</small></div>
         </footer>     
     </div>
 </body>

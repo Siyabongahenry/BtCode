@@ -1,5 +1,5 @@
 import findVariables from "./variables.js";
-import {sepValFromOper} from "./site.js";
+import sepValFromOper from "./getcond.js";
 import {condCollectorSL,solveCondition} from "./solve-cond.js"
 
 var forBtn = document.getElementById("for-btn");
@@ -26,17 +26,17 @@ export default function setForLoop()
 		this.innerHTML ="<i class='fa fa-pause'></i> stop";
 		this.disable = true;
 		//clear out put screen
-		screen = document.querySelector(".for-loop-block .display-screen");
+		screen = document.querySelector("#for-loop-block .display-screen");
 		screen.innerHTML ="";
 		//message to be outputed in the screen container
-		outputMSG = document.querySelector(".for-loop-block .output-msg").innerText;
+		outputMSG = document.querySelector("#for-loop-block .output-msg").innerText;
 		//
-		condBlock = document.querySelector(".for-loop-block #for-cond");
+		condBlock = document.querySelector("#for-loop-block #for-cond");
 		//store initial condition to return to it
 		initialCond = condBlock.innerText;
 		currentCond = initialCond;
 
-		lastCond = document.querySelector(".for-loop-block #last-cond");
+		lastCond = document.querySelector("#for-loop-block #last-cond");
 
 		//start execution
 		startExec();
@@ -48,7 +48,7 @@ function startExec(){
 	conditionArr =[];
 	condCollector = [];
 
-	varsBlock = document.querySelector(".for-loop-block #for-var");
+	varsBlock = document.querySelector("#for-loop-block #for-var");
 	variablesArr =findVariables(varsBlock.innerText).flat();
 	console.log("Array: ");
  	console.log(varsBlock.innerText);
@@ -87,7 +87,7 @@ function showSteps(count,_condBlock){
 			if(cond == "true")
 			{
 				execInnerC();
-				let innercode = document.querySelector(".for-loop-block .inner-code");
+				let innercode = document.querySelector("#for-loop-block .inner-code");
 				innercode.classList.add("curr-exec");
 				setTimeout(()=>{
 					innercode.classList.remove("curr-exec");

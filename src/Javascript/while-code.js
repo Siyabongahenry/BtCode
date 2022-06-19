@@ -1,5 +1,5 @@
 import findVariables from "./variables.js";
-import {sepValFromOper} from "./site.js";
+import sepValFromOper from "./getcond.js";
 import {condCollectorSL,solveCondition} from "./solve-cond.js"
 
 //execution time
@@ -19,7 +19,7 @@ var condBlock;
 var variablesArr =[];
 var conditionArr =[];
 
-var whileBtn = document.querySelector(".while-block .start-btn");
+var whileBtn = document.querySelector("#while-block .start-btn");
 
 export default function setWhileLoop()
 {
@@ -27,12 +27,12 @@ export default function setWhileLoop()
 		this.innerHTML ="<i class='fa fa-pause'></i> stop";
 		this.disabled = true;
 		//clear out put screen
-		screen = document.querySelector(".while-block .display-screen");
+		screen = document.querySelector("#while-block .display-screen");
 		screen.innerHTML ="";
 		//message to be outputed in the screen container
-		outputMSG = document.querySelector(".while-block .output-msg").innerText;
+		outputMSG = document.querySelector("#while-block .output-msg").innerText;
 		//
-		condBlock = document.querySelector(".while-block .cond");
+		condBlock = document.querySelector("#while-block .cond");
 		//store initial condition to return to it
 		initialCond = condBlock.innerText;
 		currentCond = initialCond;
@@ -46,7 +46,7 @@ function startExec(){
 	conditionArr =[];
 	condCollector = [];
 
-	varsBlock = document.querySelector(".while-block .vars-container");
+	varsBlock = document.querySelector("#while-block .vars-container");
 	variablesArr =findVariables(varsBlock.innerText).flat();
 	currentCond = currentCond.replaceAll(" ","");
 	//separate values from operations
@@ -80,12 +80,12 @@ function showSteps(count,_condBlock){
 		_condBlock.classList.remove("curr-exec");	
 		if(cond == "true")
 		{
-			let innercode1 = document.querySelector(".while-block .inner-code-1");
+			let innercode1 = document.querySelector("#while-block .inner-code-1");
 			innercode1.classList.add("curr-exec");
 			execInnerC();
 			setTimeout(()=>{
 				innercode1.classList.remove("curr-exec");
-				let innercode2 = document.querySelector(".while-block .inner-code-2");
+				let innercode2 = document.querySelector("#while-block .inner-code-2");
 				innercode2.classList.add("curr-exec");
 				let inc = document.getElementById("while-inc");
 				inc.classList.add("curr-exec");

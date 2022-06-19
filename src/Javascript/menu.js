@@ -25,3 +25,31 @@ function closeOnLinkClick(){
 		});
 	}
 }
+//
+var pages = document.getElementsByClassName("page");
+var pageBtns = document.getElementsByClassName("nav-btn");
+addHideEventsToPageBtns();
+function addHideEventsToPageBtns()
+{
+	console.log("page: "+pages.length);
+	console.log("buttons: "+pageBtns.length);
+	for(let i=0;i<pageBtns.length;i++){
+		pageBtns[i].addEventListener("click",()=>{
+
+			let pageId = pageBtns[i].getAttribute("data-page-id");
+			hideAllPages();
+			document.getElementById(pageId).classList.remove("d-none");
+
+		});
+	}
+}
+function hideAllPages()
+{
+	for(let i=0;i < pages.length;i++)
+	{
+		if(!pages[i].classList.contains("d-none"))
+		{
+			pages[i].classList.add("d-none");
+		}
+	}
+}

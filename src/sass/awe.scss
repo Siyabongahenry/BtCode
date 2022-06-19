@@ -1,4 +1,4 @@
-$theme-color:rgb(4, 9, 49);
+$theme-color:rgb(3, 24, 182);
 $theme-color-2:#3904f8;
 *{
     box-sizing:border-box;
@@ -10,34 +10,10 @@ $theme-color-2:#3904f8;
     display:block;
 }
 
-.btn-hide-container{
-    text-align:center;
-    padding:1%;
-    button{
-        color:white;
-        background-color:$theme-color-2;
-        border:none;
-        &:focus{
-            outline:none;
-        }
-        &:hover{
-            box-shadow:4px 4px 2px grey;
-        }
-    }
-}
 .editable-elem{
     &:focus{
         outline:none;
     }
-}
-h1,h2,h3,h4{
-    text-align:center;
-    background-color:$theme-color;
-    font-weight: bold;
-    padding:1%;
-    color: white;
-    text-align:center;
-
 }
 .git-hub-link{
     display:inline-block;
@@ -54,237 +30,36 @@ h1,h2,h3,h4{
         font-size:1.125em;
     }
 }
-.txt-darkred{
-    color:darkred;
-}
-.txt-yellow{
-    color:yellow;
-}
-.txt-center{
-    text-align:center;
-}
-.txt-left{
-    text-align:left;
-}
-.txt-right{
-    text-align: right;
-}
-.txt-white{
-    color:white;
-}
-.txt-red{
-    color: red;
-}
-.txt-black{
-    color:black;
-}
-.txt-green{
-    color:green;
-}
-.txt-theme{
+.text-theme{
     color:$theme-color;
 }
-.d-inline-b{
-    display:inline-block;
-}
-.f-900{
-    font-weight:900;
-}
-//padding-right
-.p-2{
-    padding:2%;
-}
-.content-view-btn{
-    background-color:$theme-color-2;
-    color:white;
-    border:0;
-    &:hover{
-        background-color:whitesmoke;
-        color: black;
-    }
-}
-
 .message-box{
-    background-color:$theme-color;
+    background-color:white;
     display:inline-block;
-    color: white;
     margin-top:5px;
-    width:100%;
+    width:50%;
     margin-left:10px;
     line-height:20px;
     padding:1em;
     position:relative;
     text-align: left;
-}
-.message-box::before{
-    content:"";
-    position:absolute;
-    top:0px;
-    left:-10px;
-    width:0;
-    height:0;
-    border-top:5px solid $theme-color;
-    border-bottom:5px solid transparent;
-    border-left:5px solid transparent;
-    border-right:5px solid $theme-color;
-}
-.number{
-    display:inline-block;
-    width:30px;
-    height: 30px;
-    border-radius:50%;
-    line-height:30px;
-    font-size:1em;
-    color: white;
-    background-color:black;
-    text-align:center;
-}
-/*Rows*/
-.row{
-    overflow-y: auto;
-    overflow-x: hidden;
-    > .column{
-        overflow: hidden;
-        width: 100%;
+    border:5px solid silver;
+    border-radius:10px;
+    &::before{
+	content:"";
+    	position:absolute;
+    	top:-15px;
+    	left:20px;
+    	width:0;
+    	height:0;
+    	border-top:5px solid transparent;
+    	border-bottom:5px solid silver;
+    	border-left:5px solid silver;
+    	border-right:5px solid transparent;
     }
 }
 
-/*slide container*/
-.slide-container{
-    overflow-x: hidden;
-    position:relative;
-    white-space: nowrap;
-    .slide-element{
-        display: inline-block;
-        white-space: initial;
-        overflow-x:hidden;
-        width:100%;
-        overflow-y: auto;
-        margin-left:-4px;
-        h3{
-            margin:0;
-            margin-bottom:1%;
-            text-align:center;
-        }
-    }
-    .slide-progress{
-        overflow: auto;
-        /*progress bar*/
-        .progress-container{
-            border:1px solid silver;
-            overflow: hidden;
-            .progress{
-                display: block;
-                background-color: $theme-color;
-                height: 100%;
-            }
-        }
-        /*progress with horizontal bars on top*/
-        .progress-bars-h{
-            display:flex;
-            flex-direction:row; 
-            width:100%;   
-            .progress-column{
-                display:block;
-                width:33.33%;
-                height: 4px;
-                padding-right: 2px;
-                &:last-child{
-                    padding-right:0;
-                }
-                .progress-container{
-                    height: inherit;
-                    display: block;
-                    .progress{
-                        height: inherit;
-                        width:0;
-                    }
-                }
-            }
-        }
-        .progress-circles{
-            text-align: center;
-            overflow: auto;
-            .progress-container{
-                display:inline-block;
-                height: 15px;
-                width:15px;
-                border-radius:50%;
-                .progress{
-                    height: 0;
-                }
-            }
-        }
-    }
-    .slide-nav{
-        overflow: auto;
-        height:3rem;
-        line-height: 2rem;
-        overflow: auto;
-        text-align:center;
-        button{
-            background-color: $theme-color;
-            color:white;
-            border:none;
-            font-size: 1rem;
-            &:focus{
-                outline: none;
-            }
-            &:hover{
-                font-size:22px;
-            }
-        }
-       
-        .btn-pagination-group{
-            display:inline-block;
-            white-space: initial;
-            .btn{
-                display: inline-block;
-            }
-        }
-    }
-    
-}
-/*Typing Alert*/
-.typing-alert{
-    height:40px;
-    padding: 8px;
-    overflow:hidden;
-    > span{
-        display: inline-block;
-        border-radius:50%;
-        background-color: $theme-color;
-        &:first-child{
-            height:8px;
-            width: 8px;
-        }
-        &:nth-child(2){
-            height:24px;
-            width: 24px;
-            background-color:$theme-color-2;
-        }
-        &:last-child{
-            height:16px;
-            width: 16px;
-        }
-    }
-    
-}
-.typing-alert-anim{
-    > span{
-        &:first-child{
-            animation: typing-alert 0.8s linear infinite alternate;
-        }
-        &:nth-child(2){
-            animation: typing-alert 0.8s linear infinite alternate;
-            animation-delay:0.4s;
-        }
-        &:last-child{
-            animation: typing-alert 0.8s linear infinite alternate;
-            animation-delay:0.8s;
-        }
-    }
-}
+
 /*Desktop*/
 @media only screen and (min-width:992px) {
     h1{
@@ -302,13 +77,5 @@ h1,h2,h3,h4{
     .for-mobile{
         display:none !important;
     }
-    /*Rows*/
-    .row{
-        > div{
-            &:first-child,&:last-child{
-                width:50%;
-                float:left;
-            }
-        }
-    }
+    
 }

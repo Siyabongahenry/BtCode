@@ -1,5 +1,5 @@
 import findVariables from "./variables.js";
-import {sepValFromOper} from "./site.js";
+import sepValFromOper from "./getcond.js";
 import {condCollectorSL,solveCondition} from "./solve-cond.js"
 
 var condBlock;
@@ -13,11 +13,12 @@ var condCollector =[];
 var initialCond;
 let currentCond;
 
-var ifBtn = document.querySelector(".if-block .start-btn");
-var varsBlock =document.querySelector(".if-block .vars-container ");
-var innerCode = document.querySelector(".if-block .inner-code"); 
-var btnElse = document.querySelector(".if-block .else-btn");
-var elseBlock = document.querySelector(".if-block .else");
+var ifBtn = document.querySelector("#if-block .start-btn");
+var varsBlock =document.querySelector("#if-block .vars-container ");
+var innerCode = document.querySelector("#if-block .inner-code"); 
+var btnElse = document.querySelector("#if-block .else-btn");
+var elseBlock = document.querySelector("#if-block .else");
+var condStepsBlock = document.getElementById("if-cond-steps");
 
 export default function setIfStatement()
 {
@@ -31,17 +32,20 @@ export default function setIfStatement()
 		this.disabled = true;
 
 		//message to be outputed in the screen container
-		outputMSG = document.querySelector(".if-block .output-msg").innerText;
-		else_outputMSG = document.querySelector(".if-block .else .output-msg").innerText;
+		outputMSG = document.querySelector("#if-block .output-msg").innerText;
+		else_outputMSG = document.querySelector("#if-block .else .output-msg").innerText;
 		//clear out put screen
-		screen = document.querySelector(".if-block .display-screen");
+		screen = document.querySelector("#if-block .display-screen");
 		screen.innerText="";
 		//get variables from container
 		variablesArr =findVariables(varsBlock.innerText).flat();
 
-		condBlock = document.querySelector(".if-block .cond");
+		condBlock = document.querySelector("#if-block .cond");
 		initialCond = condBlock.innerText;
 		currentCond = initialCond;
+
+		//clear if cond steps block
+		condStepsBlock.innerHTML="";
 		startExec();	
 	});
 	btnElse.addEventListener("click",function(){
@@ -78,6 +82,7 @@ function showSteps(count,_condBlock){
 		setTimeout(()=>{
 			let cond = condCollector[count].toString().replaceAll(","," ");
 			_condBlock.innerText = cond;
+			condStepsBlock.innerHTML+="<span class='d-block'>= "+cond+"</span>";
 			if(!_condBlock.classList.contains("curr-exec"))
 			{
 				_condBlock.classList.add("curr-exec");
