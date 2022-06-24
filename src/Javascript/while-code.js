@@ -21,9 +21,17 @@ var conditionArr =[];
 
 var whileBtn = document.querySelector("#while-block .start-btn");
 
+var whileCondListBtn = document.getElementById("while-cond-list-btn");
+
+var onExecIndicator = document.querySelector("#while-block .on-execute-indicator");
 export default function setWhileLoop()
 {
 	whileBtn.addEventListener("click",function(){
+		//start anim
+		onExecIndicator.classList.add("on-exec-anim");
+		//cond list btn
+		whileCondListBtn.classList.add("d-none");
+
 		this.innerHTML ="<i class='fa fa-pause'></i> stop";
 		this.disabled = true;
 		//clear out put screen
@@ -51,7 +59,6 @@ function startExec(){
 	currentCond = currentCond.replaceAll(" ","");
 	//separate values from operations
 	conditionArr = sepValFromOper(conditionArr,currentCond);
-	console.log(conditionArr);
 	//push first condition to array
 	condCollector.push([...conditionArr]);
 
@@ -59,7 +66,6 @@ function startExec(){
 
 	condCollector.push(...condCollectorSL);
 	
-	console.log(condCollector);
 	showSteps(0,condBlock);
 }
 	
@@ -104,17 +110,18 @@ function showSteps(count,_condBlock){
 				_condBlock.innerText = condCollector[0].toString().replaceAll(","," ");
 			},2000)
 		}
-	
 	}
 }
 //execute inner code
 function execInnerC(){
-	
 	screen.innerHTML += "<span>"+outputMSG+"</span>";
-
 }
 function resetBtn(){
+	whileCondListBtn.classList.remove("d-none");
+
 	whileBtn.innerHTML ="<i class='fa fa-play'></i> start";
 	whileBtn.disabled = false;
+
+	onExecIndicator.classList.remove("on-exec-anim");
 }
 

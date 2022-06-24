@@ -28,9 +28,6 @@
         </nav>
     </header>
     <div class="main-container container-fluid">
-        <div class="text-center text-warning">
-            <i class="fa fa-warning"></i> undercostruction
-        </div>
         <div class="page" id="home-page">
             <h1 class="text-center">Welcome To <span class="text-theme">Bt</span>Code</h1>
             <p class="text-center">
@@ -58,56 +55,105 @@
                 <div class="col-12 col-lg-6">
                     <div class="code-menu">  
                         <div>
+                            <div class="d-inline-block float-start prog-lang-container">
+                                <b>Language</b>: 
+                                <select class="prog-lang-list" name="prog-lang-list">
+                                    <option value="c#">C#</option>
+                                    <option value="java">Java</option>
+                                    <option value="javascript">Javascript</option>
+                                </select>
+                            </div>
                             <button class="start-btn">
                                 <i class="fa fa-play"></i> start
                             </button>
+                            <div class="on-execute-indicator">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
                         </div>
                     </div>
                     <div class="code">
-                       
-                        <code class="comments">
-                            /*the variables are editable but not the data types*/
-                        </code>
-                       
-                        <div class="vars-container">
-                            <code>
-                                <span class="data-type">int</span>&nbsp;
-                                <span class="editable-elem variable" contenteditable>n = 3</span>;
-                            </code>
-                            <br>
-                            <code>
-                                <span class="data-type">int</span>&nbsp;
-                                <span class="editable-elem variable" contenteditable>m = 6</span>;
-                            </code>
+                        <div class="variables-container">      
+                            <div>
+                                <code class="variable">
+                                    <span class="data-type">int </span>
+                                    <span class="var-name">n</span> 
+                                    <span class="initializing-sign"> = </span>
+                                    <span class="editable-elem  var-value" contenteditable >3</span>;
+                                    <span class="var-error small-error-box text-danger"></span>
+                                </code>
+                            </div>
+                            <div>
+                                <code class="variable">  
+                                    <span class="data-type">int </span>
+                                    <span class="var-name">m</span>
+                                    <span class="initializing-sign"> = </span> 
+                                    <span class="editable-elem  var-value" contenteditable>3</span>;
+                                    <span class="var-error small-error-box text-danger"></span>
+                                </code>
+                            </div>
                         </div>
                         <div>
-                            <code class="comments">/*the condition is editable*/</code>
                             <div>
                                 <code>
                                     if(
-                                    <span class="cond editable-elem"
-                                    contenteditable="true">
-                                        n > 0
-                                  </span> 
-                                    ){
+                                    <span class="cond" data-parent-block="#if-block">
+                                        <span class="comp-value">n</span>
+                                        <span class="comparator"> == </span>
+                                        <span class="comp-value">0</span>
+                                        <span class="cond-error small-error-box text-danger"></span>
+                                    </span> 
+                                    <button id="if-cond-list-btn" class="code-btn list-select-btn" data-select-list="#if-cond-list-select">
+                                        <i class="fa fa-caret-down"></i>
+                                    </button>
+                                    )
                                 </code>
+                                <div class="list-select-container">
+                                    <ul class="list-select d-none" id="if-cond-list-select" data-output-to="#if-block .cond">
+                                        <li class="head">Select A Condition</li>
+                                        <li class="option">
+                                            <code> n == 3</code>
+                                        </li>
+                                        <li class="option">
+                                            <code> n != 3</code>
+                                        </li>
+                                        <li class="option">
+                                            <code> n > 3</code>
+                                        </li>
+                                        <li class="option">
+                                            <code> n < 3</code> 
+                                        </li>
+                                        <li class="option">
+                                            <code> n <= 3</code>
+                                        </li>
+                                        <li class="option">
+                                            <code> n >= 3</code>
+                                        </li>
+                                        <li class="option">
+                                            <code>n > 0 && m < 4</code>
+                                        </li>
+                                        <li class="option">
+                                            <code> n > 1 || m < 5</code>
+                                        </li>
+                                        <li class="option">
+                                            <code> n > 0 && n < 1 || m < 5</code>
+                                        </li>
+                                        <li class="option">
+                                            <code> n > 0 || n < 2 && m < 5</code>
+                                        </li>
+                                        <li class="option">
+                                            <code> n < 0 || n < 2 && m < 5</code>
+                                        </li>
+                                    </ul>  
+                                </div>
+                                { 
                             </div>
                             <div class="if">    
-                                <code class="comments">//the output text is editable</code>
                                 <div class="inner-code">
                                     <div>
                                         <code>
-                                            <span class="print-method">
-                                                Console.WriteLine
-                                            </span>
-                                            (
-                                                <q>
-                                                    <span class="output-msg editable-elem" 
-                                                    contenteditable>
-                                                         Hello world
-                                                    </span>
-                                                </q>
-                                            );
+                                            <span class="print-method">Console.WriteLine</span>(<q><span class="output-msg editable-elem" contenteditable>Hello world</span></q>);
                                         </code>
                                     </div>
                                 </div>
@@ -125,16 +171,9 @@
                             </div>
                             <div>
                                 <div class="inner-code">
-                                    <code class="print-method">
-                                        Console.WriteLine
-                                    </code>
-                                    (
-                                        <q>
-                                            <span contenteditable class="output-msg" >
-                                                    Good bye world
-                                            </span>
-                                        </q>
-                                    );
+                                    <code>
+                                       <span class="print-method">Console.WriteLine</span>(<q><span class="output-msg editable-elem" contenteditable >Good bye world</span></q>);
+                                     </code>
                                 </div>
                             </div>
                             <div>
@@ -161,7 +200,7 @@
                             <span id="if-screen-msg"></span>
                         </div>
                     </div>
-                    <div class="condition-solution container">
+                    <div class="condition-solution">
                         <h3>
                             Condition Solution
                             <i class="fa fa-times text-danger float-end remove-elem-btn" data-element="#if-block .condition-solution"></i>
@@ -179,45 +218,71 @@
                 <div class="col-12 col-lg-6">
                     <div class="code-menu">
                         <div>
+                            <div class="d-inline-block float-start prog-lang-container">
+                                <b>Language</b>: 
+                                <select class="prog-lang-list" name="prog-lang-list">
+                                    <option value="c#">C#</option>
+                                    <option value="java">Java</option>
+                                    <option value="javascript">Javascript</option>
+                                </select>
+                            </div>
                             <button class="start-btn">
                                 <i class="fa fa-play"></i> start
                             </button>
+                            <div class="on-execute-indicator">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
                         </div>
                     </div>
                     <div class="code">
                         <div class="vars-container">
-                            <code>
-                                <span class="data-type">int</span>&nbsp;
-                                <span class="variable" >n = &nbsp;
-                                <span class="txt-center editable-elem" contenteditable
-                                 id="while-inc" >1
-                                </span>;
-                                </span>
-                            </code>
+                            <div>
+                                <code class="variable">
+                                    <span class="data-type">int </span>
+                                    <span class="var-name">n</span> 
+                                    <span class="initializing-sign"> = </span>
+                                    <span class="editable-elem  var-value" id="while-inc" contenteditable >3</span>;
+                                    <span class="var-error small-error-box text-danger"></span>
+                                </code>
+                            </div>
                         </div>
                         <div>
                             <code>
                                 while(
-                                <span class="cond editable-elem" contenteditable>
-                                    n < 3
-                                </span>
-                                ){
+                                    <span class="cond editable-elem">n < 3 </span>
+                                    <button id="while-cond-list-btn" class="code-btn list-select-btn" data-select-list="#while-block .list-select">
+                                        <i class="fa fa-caret-down"></i>
+                                    </button>
+                                )
                             </code>
+                            <div class="list-select-container">
+                                <ul class="list-select d-none" data-output-to="#while-block .cond">
+                                    <li class="head">Select A Condition</li>
+                                    <li class="option">
+                                        <code> n < 0 </code>
+                                    </li>
+                                    <li class="option">
+                                        <code> n < 5</code> 
+                                    </li>
+                                    <li class="option">
+                                        <code>n <= 5</code>
+                                    </li>
+                                    <li class="option">
+                                        <code>n == 5</code>
+                                    </li>
+                                    <li class="option">
+                                        <code> n > 1 || n < 5</code>
+                                    </li>
+                                </ul>  
+                            </div>
+                           
                         </div>
                         <div class="inner-code">
                             <div class="inner-code-1">
                                 <code>
-                                    <span class="print-method">
-                                        Console.WriteLine
-                                    </span>
-                                    (
-                                        <q>
-                                            <span contenteditable class="output-msg editable-elem" 
-                                            id="while-output-msg">
-                                                    Hello World
-                                            </span>
-                                        </q>
-                                    );
+                                    <span class="print-method">Console.WriteLine</span>(<q><span class="output-msg editable-elem" id="while-output-msg">Hello World</span></q>);
                                 </code>
                             </div>
                             <code class="comments">//n++ increment n by 1</code> 
@@ -253,19 +318,35 @@
                 <div class="col-12 col-lg-6">
                     <div class="code-menu">
                         <div>
+                            <div class="d-inline-block float-start prog-lang-container">
+                                <b>Language</b>: 
+                                <select class="prog-lang-list" name="prog-lang-list">
+                                    <option value="c#">C#</option>
+                                    <option value="java">Java</option>
+                                    <option value="javascript">Javascript</option>
+                                </select>
+                            </div>
                             <button class="start-btn" id="do-while-btn"><i class="fa fa-play"></i> start</button>
+                            <div class="on-execute-indicator">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
                         </div>
+                        
                     </div>
                     <div class="code">
                         <code class="comments">//click the number to change the value</code>
                         <div class="vars-container" id="do-vars">
-                            <code>
-                                <span class="data-type">int</span>&nbsp;
-                                <span class="txt-darkred variable" >n = 
-                                    <span class="txt-center editable-elem" contenteditable 
-                                    id="do-inc" >1</span>;
-                                </span>
-                            </code>
+                            <div>
+                                <code  class="variable">
+                                    <span class="data-type">int </span>
+                                    <span class="var-name" >n</span>
+                                    <span class="var-initializer"> = </span>
+                                    <span class="txt-center editable-elem var-value"id="do-inc" contenteditable>1</span>;
+                                    <span class="var-error small-error-box text-danger"></span>
+                                </code>
+                            </div>
                         </div>
                         <div>
                             <code>do</code>
@@ -276,21 +357,12 @@
                         <div class="inner-code">
                             <div class="inner-code-1">
                                 <code>
-                                    <span class="print-method">
-                                        Console.WriteLine
-                                    </span>
-                                    (
-                                        <q>
-                                            <span contenteditable class="output-msg editable-elem" >
-                                                    Hello World
-                                            </span>
-                                        </q>
-                                    );
+                                    <span class="print-method">Console.WriteLine</span>(<q><span contenteditable class="output-msg editable-elem" >Hello World</span></q>);
                                 </code>
                             </div>
                             <code class="comments">//n++ increment n by 1</code>
                             <div>
-                               <span class="txt-darkred inner-code-2">n++</span>;
+                               <code><span class="txt-darkred inner-code-2">n++;</span></code>
                             </div>  
                         </div>
                         <div>
@@ -299,11 +371,20 @@
                         <div>
                             <code>
                                 while(
-                                <span class="cond txt-darkred editable-elem" contenteditable>
-                                    n < 3
-                                </span>
+                                <span class="cond txt-darkred editable-elem">n < 3</span>
+                                <button id="do-while-cond-list-btn" class="code-btn list-select-btn" data-select-list="#do-while-block .list-select">
+                                    <i class="fa fa-caret-down"></i>
+                                </button>
                                 ); 
                             </code>
+                            <ul class="list-select d-none" data-output-to="#do-while-block .cond">
+                                <li class="head">Select A Condition</li>
+                                <li class="option"><code> n < 0 </code></li>
+                                <li class="option"><code> n < 5</code></li>
+                                <li class="option"><code>n <= 5</code></li>
+                                <li class="option"><code>n == 5</code></li>
+                                <li class="option"><code> n > 1 || n < 5</code></li>
+                            </ul>  
                         </div>   
                     </div>
                     <div class="text-center">
@@ -330,9 +411,22 @@
                 <div class="col-12 col-lg-6">
                     <div class="code-menu">
                         <div>
+                            <div class="d-inline-block float-start prog-lang-container">
+                                <b>Language</b>: 
+                                <select class="prog-lang-list" name="prog-lang-list">
+                                    <option value="c#">C#</option>
+                                    <option value="java">Java</option>
+                                    <option value="javascript">Javascript</option>
+                                </select>
+                            </div>
                             <button class="start-btn" id="for-btn">
                                 <i class="fa fa-play"></i> start
                             </button>
+                            <div class="on-execute-indicator">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
                         </div>
                     </div>
                     <div class="code">
@@ -344,35 +438,22 @@
                             <code>
                                 for(
                                 <span class="cond" id="for-var">
-                                    <span class="data-type">int </span>
                                     <span class="variable">
-                                        i =&nbsp;
-                                        <span id="for-value" contenteditable class="editable-elem">0
-                                        </span>
+                                        <span class="data-type">int </span>
+                                        <span class="var-name">i</span>
+                                        <span class="initializing-sign"> = </span>
+                                        <span id="for-value" class="editable-elem var-value" contenteditable>0</span>;
+                                        <span class="var-error small-error-box text-danger"></span>       
                                     </span>
-                                </span>;
-                                <span class="cond editable-elem" id="for-cond" contenteditable>
-                                    i < 3
-                                </span>;
-                                <span class="cond" id="last-cond">
-                                    i++
                                 </span>
-                                ){
+                                <span class="cond editable-elem" id="for-cond">i < 3</span>;<span class="cond" id="last-cond">i++</span>)
+                                {
                             </code>
                         </div>
                         <div class="inner-code">
                             <div>
                                 <code>
-                                    <span class="print-method">
-                                        Console.WriteLine
-                                    </span>
-                                    (
-                                        <q>
-                                            <span contenteditable class="output-msg editable-elem">
-                                                    Hello World
-                                            </span>
-                                        </q>
-                                    );
+                                    <span class="print-method">Console.WriteLine</span>(<q><span contenteditable class="output-msg editable-elem">Hello World</span></q>);
                                 </code>
                             </div>
                         </div>
@@ -408,6 +489,9 @@
                     The aim of this website is to make coding simple as possible. 
                 </p>
             </div>
+        </div>
+        <div class="text-center text-warning">
+            <i class="fa fa-warning"></i> This project is underconstruction, if something go wrong please refresh the page.
         </div>
         <footer>
             <div>

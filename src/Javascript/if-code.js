@@ -2,7 +2,6 @@ import findVariables from "./variables.js";
 import sepValFromOper from "./getcond.js";
 import {condCollectorSL,solveCondition} from "./solve-cond.js"
 
-var condBlock;
 var screen;
 var outputMSG;
 var else_outputMSG;
@@ -14,15 +13,24 @@ var initialCond;
 let currentCond;
 
 var ifBtn = document.querySelector("#if-block .start-btn");
-var varsBlock =document.querySelector("#if-block .vars-container ");
+var varsBlock =document.querySelector("#if-block .variables-container ");
+var condBlock = document.querySelector("#if-block .cond");
 var innerCode = document.querySelector("#if-block .inner-code"); 
 var btnElse = document.querySelector("#if-block .else-btn");
 var elseBlock = document.querySelector("#if-block .else");
 var condStepsBlock = document.getElementById("if-cond-steps");
 
+var condListBtn = document.getElementById("if-cond-list-btn");
+
+var onExecIndicator = document.querySelector("#if-block .on-execute-indicator");
+
 export default function setIfStatement()
 {
 	ifBtn.addEventListener("click",function(){
+		//start anim
+		onExecIndicator.classList.add("on-exec-anim");
+		//remove cond list button
+		condListBtn.classList.add("d-none");
 		//reset 
 		variablesArr =[];
 		conditionArr =[];
@@ -40,9 +48,8 @@ export default function setIfStatement()
 		//get variables from container
 		variablesArr =findVariables(varsBlock.innerText).flat();
 
-		condBlock = document.querySelector("#if-block .cond");
-		initialCond = condBlock.innerText;
-		currentCond = initialCond;
+		initialCond = condBlock.innerHTML;
+		currentCond = condBlock.innerText;
 
 		//clear if cond steps block
 		condStepsBlock.innerHTML="";
@@ -82,7 +89,7 @@ function showSteps(count,_condBlock){
 		setTimeout(()=>{
 			let cond = condCollector[count].toString().replaceAll(","," ");
 			_condBlock.innerText = cond;
-			condStepsBlock.innerHTML+="<span class='d-block'>= "+cond+"</span>";
+			condStepsBlock.innerHTML+="<span class='d-block'>"+cond+"</span>";
 			if(!_condBlock.classList.contains("curr-exec"))
 			{
 				_condBlock.classList.add("curr-exec");
@@ -103,7 +110,7 @@ function showSteps(count,_condBlock){
 			setTimeout(()=>{
 				resetBtn();
 				innerCode.classList.remove("curr-exec");
-				_condBlock.innerText = condCollector[0].toString().replaceAll(","," ");
+				_condBlock.innerHTML=initialCond;
 			},2000);	
 		}
 		else{
@@ -118,7 +125,7 @@ function showSteps(count,_condBlock){
 				{
 					innerCode.classList.remove("curr-exec");
 				}
-				_condBlock.innerText = condCollector[0].toString().replaceAll(","," ");
+				_condBlock.innerHTML=initialCond;
 			},2000);	
 		}
 	
@@ -127,6 +134,8 @@ function showSteps(count,_condBlock){
 function resetBtn(){
 	ifBtn.innerHTML ="<i class='fa fa-play'></i> start";
 	ifBtn.disabled = false;
+	condListBtn.classList.remove("d-none");
+	onExecIndicator.classList.remove("on-exec-anim");
 }
 
 

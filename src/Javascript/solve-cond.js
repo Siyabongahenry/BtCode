@@ -12,10 +12,6 @@ function solveCondition(_condArr,_varsArr){
 	return _condArr;
 	
 }
-function fixBracket()
-{
-	
-}
 
 function setExpressions(_condArr,_varsArr)
 {
@@ -82,7 +78,7 @@ function solveCon(count,_condArr)
 		if(_condArr[count-1] == "(") 
 		{
 			//closing index
-			condCollector.push("*");
+			condCollector.push("**solving-bracket**");
 			let clsIndex =findClsBIndex(_condArr,count);
 			let brac = _condArr.splice(count,clsIndex - count+1);
 			_condArr[count-1] = solveBracket(brac)[0]==true;

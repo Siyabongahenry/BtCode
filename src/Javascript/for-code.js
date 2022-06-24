@@ -20,9 +20,13 @@ var variablesArr =[];
 var conditionArr =[];
 var condCollector;
 
+var onExecIndicator = document.querySelector("#for-loop-block .on-execute-indicator");
 export default function setForLoop()
 {
 	forBtn.addEventListener("click",function(){
+		//start anim
+		onExecIndicator.classList.add("on-exec-anim");
+
 		this.innerHTML ="<i class='fa fa-pause'></i> stop";
 		this.disable = true;
 		//clear out put screen
@@ -50,21 +54,17 @@ function startExec(){
 
 	varsBlock = document.querySelector("#for-loop-block #for-var");
 	variablesArr =findVariables(varsBlock.innerText).flat();
-	console.log("Array: ");
- 	console.log(varsBlock.innerText);
- 	console.log(variablesArr);
+
 	currentCond = currentCond.replaceAll(" ","");
 	//separate values from operations
 	conditionArr = sepValFromOper(conditionArr,currentCond);
-	console.log(conditionArr);
 	//push first condition to array
 	condCollector.push([...conditionArr]);
 
 	conditionArr = solveCondition(conditionArr,variablesArr);
 
 	condCollector.push(...condCollectorSL);
-	
-	console.log(condCollector);
+
 	showSteps(0,condBlock);
 }
 
@@ -120,5 +120,7 @@ function execInnerC(){
 function resetBtn(){
 	forBtn.innerHTML ="<i class='fa fa-play'></i> start";
 	forBtn.disabled = false;
+
+	onExecIndicator.classList.remove("on-exec-anim");
 }
 

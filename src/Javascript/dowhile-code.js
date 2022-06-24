@@ -2,7 +2,6 @@ import findVariables from "./variables.js";
 import sepValFromOper from "./getcond.js";
 import {condCollectorSL,solveCondition} from "./solve-cond.js"
 
-var do_whileBtn = document.getElementById("do-while-btn");
 //execution time
 const exec_time = 2000;
 //variables outside for loop
@@ -19,9 +18,19 @@ var condBlock;
 var variablesArr =[];
 var conditionArr =[];
 var condCollector =[];
+
+var do_whileBtn = document.getElementById("do-while-btn");
+var condListBtn = document.getElementById("do-while-cond-list-btn");
+
+var onExecIndicator = document.querySelector("#do-while-block .on-execute-indicator");
 export default function setDoWhileLoop()
 {
 	do_whileBtn.addEventListener("click",function(){
+		//start anim
+		onExecIndicator.classList.add("on-exec-anim");
+
+		condListBtn.classList.add("d-none");
+
 		this.innerHTML ="<i class='fa fa-pause'></i> stop";
 		this.disabled = true;
 		//clear out put screen
@@ -52,7 +61,6 @@ function prepareCond()
 	currentCond = currentCond.replaceAll(" ","");
 	//separate values from operations
 	conditionArr = sepValFromOper(conditionArr,currentCond);
-	console.log(conditionArr);
 	//push first condition to array
 	condCollector.push([...conditionArr]);
 
@@ -125,6 +133,9 @@ function execInnerC(){
 function resetBtn(){
 	do_whileBtn.innerHTML ="<i class='fa fa-play'></i> start";
 	do_whileBtn.disabled = false;
+	condListBtn.classList.remove("d-none");
+
+	onExecIndicator.classList.remove("on-exec-anim");
 }
 
 

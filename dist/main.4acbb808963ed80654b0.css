@@ -20,7 +20,10 @@
   display: block; }
 
 .editable-elem:focus {
-  outline: none; }
+  outline: none;
+  display: inline-block;
+  min-width: 20px;
+  border: 1px solid silver; }
 
 .git-hub-link {
   display: inline-block;
@@ -63,6 +66,37 @@
     border-left: 5px solid silver;
     border-right: 5px solid transparent; }
 
+.list-select-container {
+  position: relative;
+  display: block;
+  margin-top: 1%; }
+
+.list-select {
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: -1px -1px 1px silver,1px 1px 1px silver;
+  overflow: hidden;
+  overflow-y: scroll;
+  height: 200px; }
+  .list-select .head {
+    text-align: center;
+    background-color: #b9d4e0;
+    line-height: 20px; }
+  .list-select .option {
+    padding-left: 1%;
+    line-height: 20px; }
+    .list-select .option:hover {
+      background-color: #0d76a7; }
+      .list-select .option:hover code {
+        color: white !important; }
+
 /*Desktop*/
 @media only screen and (min-width: 992px) {
   h1 {
@@ -80,44 +114,44 @@ body {
   background-color: #f3f3f3; }
 
 nav {
-  position: fixed;
-  top: 0;
   left: 0;
+  top: 0;
+  position: fixed;
+  box-shadow: 2px 2px 4px #f3f3f3;
   width: 100vw;
   line-height: 40px;
   height: 40px;
-  box-shadow: 2px 2px 4px #f3f3f3;
   background-color: white;
   font-size: 1.25em;
-  z-index: 1; }
+  z-index: 10; }
   nav #btn-side-menu {
     animation: animBars 0.8s linear 10;
     animation-delay: 8s; }
   nav ul {
-    list-style: none;
     margin: 0;
-    padding: 0; }
-    nav ul li {
-      font-weight: bold; }
+    padding: 0;
+    list-style: none; }
+  nav li {
+    font-weight: bold; }
   nav a, nav button {
     text-decoration: none;
     color: black;
     background-color: inherit; }
+    nav a:hover, nav button:hover {
+      background-color: #0318b6 !important;
+      color: white !important;
+      outline: none !important;
+      cursor: pointer; }
   nav button {
-    border: none;
+    border: 0;
     font-size: inherit; }
     nav button:focus {
-      border: 0; }
-  nav a:hover, nav button:hover {
-    background-color: #0318b6 !important;
-    color: white !important;
-    outline: none !important;
-    cursor: pointer; }
+      outline: none; }
   nav .top-menu {
-    padding: 0;
     margin: 0;
+    padding: 0;
     list-style: none; }
-    nav .top-menu a {
+    nav .top-menu a, nav .top-menu button {
       color: black;
       display: inline-block;
       padding: 0 2%; }
@@ -148,9 +182,7 @@ nav {
     transition: margin 0.8s;
     overflow-x: hidden;
     width: 100%; }
-    nav .side-menu li {
-      background-color: #edf4f8; }
-    nav .side-menu a, nav .side-menu button {
+    nav .side-menu a, nav .side-menu button, nav .side-menu button {
       display: block;
       margin: 1%;
       padding: 2%;
@@ -159,20 +191,21 @@ nav {
       text-align: left;
       font-weight: bold;
       background-color: inherit; }
-    nav .side-menu ul a, nav .side-menu ul button {
-      padding-left: 10%; }
+    nav .side-menu li {
+      background-color: #edf4f8; }
+      nav .side-menu li a, nav .side-menu li button, nav .side-menu li button {
+        padding-left: 10%; }
   nav .side-menu-ml {
     margin-left: -100%; }
 
 .main-container {
   margin-top: 44px; }
   .main-container .page {
-    box-shadow: -2px -2px 4px #f3f3f3,2px 2px 4px #f3f3f3;
-    border-radius: 10px;
+    box-shadow: -2px -2px 4px #f3f3f3, 2px 2px 4px #f3f3f3;
     padding: 2%;
     margin: 2%;
     overflow-y: auto;
-    background-color: white;
+    border-radius: 10px;
     background-image: linear-gradient(to right, white, #f6fcff);
     min-height: 60vh; }
   .main-container #home-page .anim-screen > span {
@@ -199,6 +232,10 @@ nav {
       background-color: #e2dfdf;
       text-align: center;
       padding: 1%; }
+      .main-container .program-container .code-menu .prog-lang-container select {
+        border: 0; }
+        .main-container .program-container .code-menu .prog-lang-container select:focus {
+          outline: none; }
       .main-container .program-container .code-menu button {
         background-color: white;
         color: #0318b6;
@@ -207,30 +244,74 @@ nav {
         .main-container .program-container .code-menu button:hover {
           color: blue;
           opacity: 0.8; }
-    .main-container .program-container .variables-container {
-      padding: 2% 0%; }
-    .main-container .program-container code {
-      color: #4b0b02; }
+      .main-container .program-container .code-menu .on-execute-indicator {
+        display: inline-block;
+        width: 50px;
+        height: 30px; }
+        .main-container .program-container .code-menu .on-execute-indicator span {
+          display: inline-block;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background-color: #09b8be; }
+          .main-container .program-container .code-menu .on-execute-indicator span:nth-child(2) {
+            animation-delay: 0.5s; }
+          .main-container .program-container .code-menu .on-execute-indicator span:nth-child(3) {
+            animation-delay: 1s; }
+      .main-container .program-container .code-menu .on-exec-anim span {
+        animation: on-exec-anim 1s linear infinite alternate; }
+    .main-container .program-container .cond-list {
+      box-shadow: -1px -1px 1px silver, 1px 1px 1px silver; }
+      .main-container .program-container .cond-list h3 {
+        font-size: 1em;
+        text-align: center;
+        margin: 0;
+        background-color: black;
+        color: white; }
+      .main-container .program-container .cond-list ul {
+        background-color: white;
+        margin: 0;
+        padding: 0;
+        list-style: none; }
+      .main-container .program-container .cond-list li {
+        padding: 1%;
+        padding-left: 2%;
+        border-bottom: 1px solid black; }
+        .main-container .program-container .cond-list li:hover {
+          background-color: #0d76a7; }
+          .main-container .program-container .cond-list li:hover code {
+            color: white; }
     .main-container .program-container .code-btn {
       border-radius: 5px;
       background-color: #0d76a7;
       color: white;
       border-color: #c9e6f3; }
     .main-container .program-container .code {
-      font-size: 0.875rem;
-      font-weight: 900;
       text-align: left;
       color: #05212e;
-      padding: 1%; }
-      .main-container .program-container .code .data-type {
-        color: #d35807; }
+      padding: 1%;
+      font-size: 0.875rem;
+      font-weight: 900; }
       .main-container .program-container .code .variable {
-        color: #043192; }
-      .main-container .program-container .code .vars-container:focus {
-        outline: none; }
+        position: relative;
+        display: inline-block; }
+        .main-container .program-container .code .variable .data-type {
+          color: #d35807; }
+        .main-container .program-container .code .variable .var-name, .main-container .program-container .code .variable .initializing-sign, .main-container .program-container .code .variable .var-value {
+          color: #043192; }
+      .main-container .program-container .code .small-error-box {
+        left: 100%;
+        top: 100%;
+        position: absolute;
+        font-size: 0.675rem;
+        display: inline-block;
+        min-width: 100px;
+        background-color: whitesmoke;
+        z-index: 3; }
       .main-container .program-container .code .comments {
         color: green; }
       .main-container .program-container .code .cond {
+        position: relative;
         display: inline-block;
         min-width: 50px;
         color: #6799bb;
@@ -245,20 +326,17 @@ nav {
         .main-container .program-container .code .inner-code .print-method {
           color: chocolate; }
       .main-container .program-container .code .curr-exec {
-        text-shadow: 2px 2px 1px #f88f17; }
+        text-shadow: 2px 2px 1px #ca780d; }
   .main-container .condition-solution {
-    line-height: 20px;
-    height: 120px;
-    overflow-y: scroll;
-    background-color: #76d4e0ce;
-    border-radius: 10px;
-    border: 2px solid silver;
-    padding: 0 2%; }
+    background-color: #c9e6f3;
+    padding: 2%;
+    margin: 2%;
+    text-align: center; }
     .main-container .condition-solution h3 {
       text-align: center; }
   .main-container .console-window {
     margin: 2%;
-    box-shadow: -2px -2px 2px silver,2px 2px 2px silver; }
+    box-shadow: -2px -2px 2px silver, 2px 2px 2px silver; }
     .main-container .console-window h3 {
       text-align: left;
       margin: 0;
@@ -285,7 +363,7 @@ nav {
     border-radius: 10px;
     padding: 2%;
     margin: 2%; }
-    .main-container footer a {
+    .main-container footer a, .main-container footer nav button, nav .main-container footer button {
       text-decoration: none;
       font-size: 0.875em;
       background-color: #0d76a7;
@@ -300,6 +378,14 @@ nav {
   100% {
     opacity: 1; } }
 
+@keyframes on-exec-anim {
+  0% {
+    width: 2px;
+    height: 2px; }
+  100% {
+    width: 10px;
+    height: 10px; } }
+
 @media only screen and (min-width: 992px) {
   nav {
     line-height: 30px;
@@ -312,7 +398,7 @@ nav {
       overflow: initial;
       box-shadow: 2px 2px 2px #e2dfdf;
       top: 32px; }
-      nav .side-menu a, nav .side-menu button {
+      nav .side-menu a, nav .side-menu button, nav .side-menu button {
         padding: 1%;
         margin: 0%;
         margin-top: 1%; }
@@ -320,7 +406,7 @@ nav {
         float: left;
         width: 25%;
         position: relative; }
-        nav .side-menu > li a, nav .side-menu > li button {
+        nav .side-menu > li a, nav .side-menu > li button, nav .side-menu > li button {
           text-align: center;
           background-color: inherit; }
         nav .side-menu > li ul {
@@ -329,7 +415,7 @@ nav {
           width: 100%;
           top: 100%;
           left: 0; }
-          nav .side-menu > li ul a, nav .side-menu > li ul button {
+          nav .side-menu > li ul a, nav .side-menu > li ul button, nav .side-menu > li ul button {
             text-align: left; }
   .main-container .program-container .code {
     font-size: 1em; } }

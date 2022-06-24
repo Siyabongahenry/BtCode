@@ -31,8 +31,6 @@ var pageBtns = document.getElementsByClassName("nav-btn");
 addHideEventsToPageBtns();
 function addHideEventsToPageBtns()
 {
-	console.log("page: "+pages.length);
-	console.log("buttons: "+pageBtns.length);
 	for(let i=0;i<pageBtns.length;i++){
 		pageBtns[i].addEventListener("click",()=>{
 
