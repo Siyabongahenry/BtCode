@@ -32,7 +32,7 @@ function setLangInstruc(lang)
             break;
         case 'java':
             setDataType("int");
-            setPrintMethod("System.Print");
+            setPrintMethod("System.out.println");
             break;
         case 'javascript':
             setDataType("let");
